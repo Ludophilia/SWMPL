@@ -4,36 +4,52 @@
 
 int ft_checkbase(char *base) {
   if (strcmp(base, "0123456789") == 0 || strcmp(base, "01") == 0 ||
-      strcmp(base, "0123456789ABCDEF") == 0 || strcmp(base, "poneyvif") == 0){
+      strcmp(base, "0123456789ABCDEF") == 0 ||
+	   strcmp(base, "poneyvif") == 0)
+  {
     return (1);
   }
   return (0);
 }
 
-void ft_putnbr_base(int nbr, char *base) {
-  char c;
-  int radix;
-  int rem;
+int ft_man_negatives(int num)
+{
+	if (num < 0)
+	{
+		write(1, "-", 1);
+		return -num;
+	}
+	return num;
+}
 
-  if (!ft_checkbase(base))
-    return;
+void ft_putnbr_base(int nbr, char *base) {
+  int radix;
+
+  if (!ft_checkbase(base)) return;
+  nbr = ft_man_negatives(nbr);
   radix = (int)strlen(base);
-  rem = nbr % radix;
   if (nbr >= radix)
     ft_putnbr_base(nbr / radix, base);
-  else
-    write(1, "\n", 1);
-  c = base[rem];
-  write(1, &c, 1);
+  write(1, &(base[nbr % radix]), 1);
 }
 
 int main(void) {
   ft_putnbr_base(-255, "0123456789");
+  write(1, "\n", 1);
+  ft_putnbr_base(255, "0123456789");
+  write(1, "\n", 1);
   ft_putnbr_base(-255, "01");
+  write(1, "\n", 1);
+  ft_putnbr_base(255, "01");
+  write(1, "\n", 1);
   ft_putnbr_base(-198, "0123456789ABCDEF");
+  write(1, "\n", 1);
   ft_putnbr_base(255, "poneyvif");
-  ft_putnbr_base(198, "+01");
+  write(1, "\n", 1);
+  ft_putnbr_base(-198, "+01");
+  write(1, "\n", 1);
   ft_putnbr_base(198, "");
+  write(1, "\n", 1);
   return (0);
 }
 
