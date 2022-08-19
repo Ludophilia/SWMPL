@@ -28,9 +28,9 @@ void ft_putnbr_base(int nbr, char *base) {
 }
 
 int main(void) {
-  ft_putnbr_base(255, "0123456789");
-  ft_putnbr_base(255, "01");
-  ft_putnbr_base(198, "0123456789ABCDEF");
+  ft_putnbr_base(-255, "0123456789");
+  ft_putnbr_base(-255, "01");
+  ft_putnbr_base(-198, "0123456789ABCDEF");
   ft_putnbr_base(255, "poneyvif");
   ft_putnbr_base(198, "+01");
   ft_putnbr_base(198, "");
