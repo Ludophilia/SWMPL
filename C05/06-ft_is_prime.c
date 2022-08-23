@@ -9,7 +9,8 @@ int    ft_is_prime(int nb)
 		return (0);
 	i = nb;
 	ht = 0;
-	while (i > 1)
+	while (i > 1) /* There is a better way (i > nb / i) that computes in log
+	time */
 	{
 		if (nb % i == 0)
 			ht += 1;
