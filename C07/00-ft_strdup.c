@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char    *ft_strdup(char *src)
+char    *ft_strdup(char *src) // ET LES CORRECTIONS ???
 {
 	char    *dest;
 	int    i;
@@ -18,6 +18,7 @@ char    *ft_strdup(char *src)
 		otherwise you'll lose track of the initial pos of your dest string */
 		i += 1;
 	}
+	*(dest + i + 1) = '\0'; 
 	return dest;
 }
 
