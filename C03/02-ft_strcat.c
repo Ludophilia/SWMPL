@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 int    ft_strlen(char *str)
 {
@@ -35,5 +36,7 @@ int    main(void)
 	char    dest1[2] = "hello";
 
 	printf("%s\n", ft_strcat(dest, src));
-	printf("%s\n", ft_strcat(dest1, src1));
+	printf("%s\n\n", ft_strcat(dest1, src1));
+	// printf("%s\n", strcat(dest, src));
+	// printf("%s\n", strcat(dest1, src1));
 }

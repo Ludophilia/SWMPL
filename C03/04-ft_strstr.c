@@ -5,25 +5,19 @@ char    *ft_strstr(char *str, char *to_find)
 {
 	int    i;
 	int    j;
-	int    pos;
 
-	if (!*to_find)
-		return str;
 	i = 0;
 	j = 0;
-	pos = 0;
+	if (!*to_find)
+		return str;
 	while (str[i])
 	{
-		if ((str[i] == to_find[j]) && to_find[j])
+		j = 0;
+		while (str[i + j] == to_find[j])
 		{
-			pos = i;
-			while ((str[i] == to_find[j]) && to_find[j])
-			{
-				i++;
-				j++;
-			}
-			if (!to_find[j])
-				return (str + pos);
+			if (!to_find[j + 1])
+				return (str + i);
+			j++;
 		}
 		i++;
 	}
@@ -33,12 +27,11 @@ char    *ft_strstr(char *str, char *to_find)
 int    main(void)
 {
 	printf("%s\n", ft_strstr("hello", ""));
-	printf("%s\n", ft_strstr("hello", "ello"));
+	printf("%s\n\n", strstr("hello", ""));
 	printf("%s\n", ft_strstr("hello", "elloi"));
-	printf("%s\n\n", ft_strstr("hello", "amazones"));
-
-	printf("%s\n", strstr("hello", ""));
-	printf("%s\n", strstr("hello", "ello"));
-	printf("%s\n", strstr("hello", "elloi"));
-	printf("%s\n", strstr("hello", "amazones"));
+	printf("%s\n\n", strstr("hello", "elloi"));
+	printf("%s\n", ft_strstr("hello", "ello"));
+	printf("%s\n\n", strstr("hello", "ello"));
+	printf("%s\n", ft_strstr("hella", "amazones"));
+	printf("%s\n\n", strstr("hella", "amazones"));
 }
