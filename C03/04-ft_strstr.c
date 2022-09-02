@@ -1,23 +1,13 @@
 #include <stdio.h>
 #include <string.h>
 
-int    ft_strlen(char *str)
-{
-	int    len;
-
-	len = 0;
-	while (*(str + len))
-		len++;
-	return (len);
-}
-
 char    *ft_strstr(char *str, char *to_find)
 {
 	int    i;
 	int    j;
 	int    pos;
 
-	if (!ft_strlen(to_find))
+	if (!*to_find)
 		return str;
 	i = 0;
 	j = 0;
