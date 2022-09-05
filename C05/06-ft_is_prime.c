@@ -2,23 +2,18 @@
 
 int    ft_is_prime(int nb)
 {	
-	int    i;
-	int    ht;
+	int     pnb;
 
 	if (nb < 2)
 		return (0);
-	i = nb;
-	ht = 0;
-	while (i > 1) /* There is a better way (i > nb / i) that computes in log
-	time */
+	pnb = 2;
+	while (pnb <= nb / 2)
 	{
-		if (nb % i == 0)
-			ht += 1;
-		i -= 1;
+		if (nb % pnb == 0)
+			return (0);
+		pnb++;
 	}
-	if (ht == 1)
-		return (1);
-	return (0);
+	return (pnb);
 }
 
 int    main(void)
@@ -34,3 +29,26 @@ int    main(void)
 		i++;
 	}
 }
+
+/* Previous attempts */
+
+// int    ft_is_prime(int nb)
+// {	
+// 	int    i;
+// 	int    ht;
+
+// 	if (nb < 2)
+// 		return (0);
+// 	i = nb;
+// 	ht = 0;
+// 	while (i > 1) /* There is a better way (i > nb / i) that computes in log
+// 	time */
+// 	{
+// 		if (nb % i == 0)
+// 			ht += 1;
+// 		i -= 1;
+// 	}
+// 	if (ht == 1)
+// 		return (1);
+// 	return (0);
+// }
