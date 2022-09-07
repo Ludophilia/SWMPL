@@ -41,7 +41,7 @@ void    ft_putnbr_base(int nb, char *base)
 
 	if(!(rdx = ft_get_radix(base)))
 		return;
-	if (nb > rdx || nb < -rdx)
+	if (nb >= rdx || nb <= -rdx)
 		ft_putnbr_base(nb / rdx, base);
 	if (nb < 0 && nb > -rdx)
 		ft_putchar('-');
@@ -50,7 +50,6 @@ void    ft_putnbr_base(int nb, char *base)
 	else
 		ft_putchar(base[-(nb % rdx)]);
 }
-
 
 int    main(void)
 {
@@ -61,6 +60,10 @@ int    main(void)
 	ft_putnbr_base(-255, "01");
 	write(1, "\n", 1);
 	ft_putnbr_base(255, "01");
+	write(1, "\n", 1);
+	ft_putnbr_base(-42, "01");
+	write(1, "\n", 1);
+	ft_putnbr_base(42, "01");
 	write(1, "\n", 1);
 	ft_putnbr_base(-198, "0123456789ABCDEF");
 	write(1, "\n", 1);

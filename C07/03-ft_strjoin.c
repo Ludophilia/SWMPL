@@ -1,63 +1,67 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
-size_t    ft_strslen(int size, char **strs, char *sep)
+int    ft_strlen(char *str)
 {
-	size_t    tt_size;
+	int    l;
 
-	if (size <= 0)
-		return (0);
-	tt_size = 0;
-	while (*strs)
-	{
-		tt_size += strlen(*strs);
-		strs += 1;
-	}
-	tt_size += 1 + (size - 1) * strlen(sep);
-	return (tt_size); 
+	l = 0;
+	while (str[l])
+		l++;
+	return (l);
 }
 
-void    ft_build_str(char *newstr, char **strs, int size, char *sep)
+int    ft_sprlen(char **strs, char *sep)
+{
+	int    i;
+	int    l;
+
+	i = 0;
+	l = 0;
+	while (strs[i])
+	{
+		l += ft_strlen(strs[i]);
+		i++;
+	}
+	l += i * ft_strlen(sep);
+	return (l);
+}
+
+char    *ft_strcat(char *dest, char *src)
 {
 	int    i;
 	int    j;
-	int    k;
 
-	i = 0;	
-	k = 0;
-	while (strs[i])
+	i = ft_strlen(dest);
+	j = 0;
+	while (src[j])
 	{
-		j = 0;
-		while (strs[i][j])
-		{
-			newstr[k] = strs[i][j];
-			k += 1;
-			j += 1;
-		}
-		j = 0;
-		while (sep[j] && i < (size - 1))
-		{
-			newstr[k] = sep[j];
-			k += 1;
-			j += 1;
-		}
-		i += 1;
+		dest[i] = src[j];
+		i++;
+		j++;
 	}
-	k += 1;
-	newstr[k] = '\0';
+	dest[i] = '\0';
+	return (dest);
 }
 
 char    *ft_strjoin(int size, char **strs, char *sep)
 {
-	char    *newstr;
+	char    *str;
+	int    i;
 
-	if (!(newstr = (char *)malloc(ft_strslen(size, strs, sep))))
-		return (NULL);
+	if (!(str = malloc((ft_sprlen(strs, sep) + 1) * sizeof(char))))
+		return (str);
 	if (size == 0)
-		return (newstr);
-	ft_build_str(newstr, strs, size, sep);
-	return (newstr);
+		return (str);
+	i = 0;
+	while (strs[i])
+	{
+		str = ft_strcat(str, strs[i]);
+		if (i < (size - 1))
+			str = ft_strcat(str, sep);
+		i++;
+	}	
+	return (str);
 }
 
 int    main(void)
@@ -74,9 +78,12 @@ int    main(void)
 	strs[0] = str1;
 	strs[1] = str2;
 	strs[2] = str3;
-	printf("%s\n", ft_strjoin(3, strs, " "));
+
+	printf("%s\n", ft_strjoin(3, strs, "\n"));
 	printf("%s\n", ft_strjoin(0, strs, " "));
 }
+
+/* Previous attempts... Some of them are working of course! */
 
 // while (i < 50) /* EXPLORE THIS, SOMETHING IS WRONG. CHECKING 
 // *(c_str + i) is unsafe when the space has been allocated by malloc. It 
@@ -90,3 +97,73 @@ int    main(void)
 // 	i += 1;
 // }
 // i = 0;
+
+// int    ft_sprlen(char **strs, char *sep)
+// {
+// 	int    i;
+// 	int    j;
+// 	int    l;
+
+// 	i = 0;
+// 	l = 0;
+// 	while (strs[i])
+// 	{
+// 		j = 0;
+// 		while (strs[i][j])
+// 			j++;
+// 		i++;
+// 		l += j;
+// 	}
+// 	j = 0;
+// 	while (sep[j])
+// 		j++;
+// 	l += i * j;
+// 	return (l);
+// }
+
+// /* build it with cat... Why not try it ? */
+
+// char    *ft_build_str_from_strs(char *str, char **strs, int size, char *sep)
+// {
+// 	int    i;
+// 	int    j;
+// 	int    k;
+
+// 	i = 0;
+// 	k = 0;
+// 	while (strs[i])
+// 	{
+// 		j = 0;
+// 		while (strs[i][j])
+// 		{
+// 			str[k] = strs[i][j];
+// 			k++;
+// 			j++;
+// 		}
+// 		j = 0;
+// 		while (sep[j] && i < (size - 1))
+// 		{
+// 			str[k] = sep[j];
+// 			k++;
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// 	str[k] = '\0';
+// 	return (str);
+// }
+
+// char    *ft_strjoin(int size, char **strs, char *sep)
+// {
+// 	char    *str;
+// 	int    i;
+// 	int    j;
+// 	int    k;
+
+// 	if (!(str = malloc((ft_sprlen(strs, sep) + 1) * sizeof(char))))
+// 		return (str);
+// 	if (size == 0)
+// 		return (str);
+// 	str = ft_build_str_from_strs(str, strs, size, sep);
+// 	return (str);
+// }
