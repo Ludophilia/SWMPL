@@ -1,0 +1,24 @@
+CC = gcc
+CCLAGS = -Wall -Wextra -Werror -c
+ARC = ar
+ARCFLAGS = -rcs
+SRCS = ./srcs
+
+INCLUDES = ./includes
+C_FILES = *.c
+OBJ_FILES = srcs/*.o #${CFILES: .c=.o}
+
+all: libft.a
+libft.a: srcs/*.o
+	ar -rcs libft.a srcs/*.o
+srcs/*.o:
+	cd srcs && gcc -Wall -Wextra -Werror -Iincludes -c *.c
+clean:
+	rm srcs/*.o
+fclean:
+	make clean
+	rm *.a
+re:
+	make fclean
+	make all
+
