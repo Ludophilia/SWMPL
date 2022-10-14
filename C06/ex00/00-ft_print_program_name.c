@@ -3,6 +3,8 @@
 
 int    main(int argc, char **argv)
 {
+	if (argc < 0)
+		return (1);
 	while(**argv)
 	{	
 		write(1, &(**argv), 1);

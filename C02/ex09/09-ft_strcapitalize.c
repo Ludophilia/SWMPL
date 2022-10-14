@@ -2,11 +2,11 @@
 
 int    ft_check_for_cap(int pos, char *str)
 {	
-	if (pos < 0)
-		return (0);
-	else if (!(str[pos] >= 'a' && str[pos] <= 'z'))
-		return (0);
-	else if (pos == 0)
+	// if (pos < 0)
+	// 	return (0);
+	// else if (!(str[pos] >= 'a' && str[pos] <= 'z'))
+	// 	return (0);
+	if (pos == 0)
 		return (1);
 	else if (str[pos - 1] == ' ' || str[pos - 1] == '+' || 
 		str[pos - 1] == '-')
@@ -16,9 +16,9 @@ int    ft_check_for_cap(int pos, char *str)
 
 int    ft_check_for_xupr(int pos, char *str)
 {
-	if (pos <= 0)
-		return (0);
-	else if (str[pos - 1] == ' ' || str[pos - 1] == '+' || 
+	// if (pos <= 0)
+	// 	return (0);
+	if (str[pos - 1] == ' ' || str[pos - 1] == '+' || 
 		str[pos - 1] == '-')
 		return (0);
 	else if (!(str[pos] >= 'A' && str[pos] <= 'Z'))
