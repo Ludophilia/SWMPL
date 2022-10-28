@@ -1,0 +1,63 @@
+// What should we do ??
+
+	// Create the array to store the str pointers
+
+		// How to know the length ??
+			// len of charset has an impact
+				// ✅ if len(charset) == 0 && if len(str) > 0 -> 1 word
+
+			// len of str has also an impact.
+				// ✅ if len(str) == 0 -> 0 words
+				// ✅ more gen, if len(str) <= len(charset) -> 0 words
+
+			// 💡 Num of times charset appears has an impact
+				// Alg has to check for charset and not charset (words)
+					// to know num of words
+						// You have to know the total number of sequences (words 
+						// + charset)
+						// and the number of charset
+						// then subtract sequences - charset
+				// EX : if charset 2 times 
+					// -> 3 words ? (5 - 2) | WWWWCCCCCWWWWWCCCCCWWWW
+					// if no word after charset 
+						// -> 2 words ? (4 - 2) | WWWWCCCCCWWWWWCCCCC
+					// if no word before and after charset
+						// -> 1 word ? (3 - 2) | CCCCCWWWWWCCCCC
+
+	// Iterate on str to look for words
+
+		// 2-3 tracking vars
+			// one starts word (start) that move to start next word
+			// one that move char by char towards end word (end)
+		
+		// A check to see if what follow is charset
+			// has it's own local vars
+			// returns a bool 
+				// true -> create a word that starts from vars start to end
+				
+		// A function to create word
+			// uses malloc 
+				// How to know size ?
+					// the tracking vars will help
+			// return the address of its first char
+
+		// A way to store the address of newly created word in the
+		// arr of char *
+			// maybe via a function
+				// maybe with another var to track the position of free space
+				// maybe move the pointer ??
+
+####################################################################################################
+
+// Search Charset
+
+WWWWCCCCCWWWWW
+
+// if something before -> one word
+// if end of line and something before that is not charset -> one word ? 
+
+###############################################
+
+// if something before -> one word
+// if something after ?? -> one word
+

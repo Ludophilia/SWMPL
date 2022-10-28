@@ -1,0 +1,59 @@
+✨🌟😈 EVIL TESTS 😈🌟✨
+
+😈🤩 Made by a psychopath with passion 🤩😈
+
+Happy path :)
+	"salut ça va" " "
+		Expected 3 words
+	"salutXYZçaXYZva" "XYZ"
+		Expected 3 words
+
+No charset
+	"lol" ""
+		Expected 1 word
+	"" ""
+		Expected 0 word
+
+No str (len_str == 0)
+	"" " "
+		Expected 0 word
+	"" "bella"
+		Expected 0 word
+
+(len_str < len_charset) && (len_str > 0)
+	"bell" "bella"
+		Expected 1 word
+
+Charset at the end of str and NO EMPTY STR
+	"salut ça va " " "
+		Expected 3 words
+	"salutXYZçaXYZvaXYZ" "XYZ"
+		Expected 3 words
+
+Charset at the start of str and NO EMPTY STR
+	" salut ça va" " "
+		Expected 3 words
+	"XYZsalutXYZçaXYZva" "XYZ"
+		Expected 3 words
+
+Charset at the start/end of str and NO EMPTY STR
+	"XYZsalutXYZçaXYZvaXYZ" "XYZ"
+		Expected 3 words
+
+Too many charset and NO EMPTY STR
+	"salutXXXXXXXcaXXvaXXXXXXXXXXXXXX" "X"
+		Expected 3 words
+	"salut ça va                     " " "
+		Expected 3 words
+	"XXXXXXXXXXXXXXsalutXXXXXXXcaXXvaXXXXXXXXXXXXXX" "X"
+		Expected 3 words
+
+Incomplete charset
+	"XYsalutXYZçaYZva" "XYZ"
+		Expected 2 words
+	" salut  ça va " "  "
+		Expected 2 words
+
+Incomplete charset and NO EMPTY STR
+	"  salut  ça va " "  "
+		Expected 2 words
