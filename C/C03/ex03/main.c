@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgermany <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 14:33:39 by jgermany          #+#    #+#             */
-/*   Updated: 2022/09/26 18:49:58 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/08 19:52:26 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 {	
 	char	dest1[100];
 	char	dest2[100];
-	int	i;
+	int		i;
 
 	if (argc != 4)
 		return (1);
@@ -31,8 +31,10 @@ int	main(int argc, char **argv)
 		dest2[i] = argv[1][i];
 		i++;
 	}
-	printf("(dest1 = %s, dest2 = %s, src = %s, size = %i)\n\n", dest1, dest2, argv[2], atoi(argv[3]));
-	printf("ft_strncat : %s\n", ft_strncat(dest1, argv[2], atoi(argv[3])));
-	printf("strncat : %s\n\n", strncat(dest2, argv[2], atoi(argv[3])));
-	printf("(dest1 = %s, dest2 = %s, src = %s, size = %i)\n", dest1, dest2, argv[2], atoi(argv[3]));
+	printf("ft_strncat('%s', '%s', %i) : '%s'\n",
+		dest1, argv[2], atoi(argv[3]),
+		ft_strncat(dest1, argv[2], atoi(argv[3])));
+	printf("strncat('%s', '%s', %i) : '%s'\n",
+		dest2, argv[2], atoi(argv[3]),
+		ft_strncat(dest2, argv[2], atoi(argv[3])));
 }
