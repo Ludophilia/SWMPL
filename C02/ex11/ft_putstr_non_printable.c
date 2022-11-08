@@ -1,45 +1,48 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/08 11:25:36 by jgermany          #+#    #+#             */
+/*   Updated: 2022/11/08 13:34:28 by jgermany         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-void    ft_putchar(char c)
+void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
-int    ft_is_printable(char c)
+void	ft_putchar_b16(short c)
 {
-	if (c >= 32 && c <= 126)
-		return (1);
-	return (0);
-}
+	char	*base_16;
 
-void    ft_to_base_16(int i)
-{
-	char    *base_16 = "0123456789abcdef";
-
+	base_16 = "0123456789abcdef";
 	ft_putchar('\\');
-	ft_putchar(base_16[i / 16]);
-	ft_putchar(base_16[i % 16]);
+	if (c < 0)
+	{
+		ft_putchar('-');
+		c *= -1;
+	}
+	ft_putchar(base_16[c / 16]);
+	ft_putchar(base_16[c % 16]);
 }
 
-void    ft_putstr_non_printable(char *str)
+void	ft_putstr_non_printable(char *str)
 {
-	int    i;
+	int	i;
 
 	i = 0;
 	while (str[i])
 	{
-		if (ft_is_printable(str[i]))
+		if (str[i] >= 32 && str[i] <= 126)
 			ft_putchar(str[i]);
 		else
-			ft_to_base_16(str[i] % 256);
+			ft_putchar_b16(str[i]);
 		i++;
 	}
-	ft_putchar('\n');
-}
-
-int    main(void)
-{
-	ft_putstr_non_printable("Coucou\ntu vas bien ?");
-	ft_putstr_non_printable("Cou\x00cou\n\x03tu\x0Fvas\x17\nbien?");
 }
