@@ -1,24 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat_ori.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgermany <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:52:54 by jgermany          #+#    #+#             */
-/*   Updated: 2022/09/29 16:47:51 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/09 20:52:18 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-unsigned int	ft_strlen(char *str)
-{
-	unsigned int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
 
 unsigned int	ft_null_check(char *dest, char *src)
 {
@@ -35,6 +25,8 @@ unsigned int	ft_null_check(char *dest, char *src)
 	while (strs[j])
 	{
 		i = 0;
+		if (!strs[j][i])
+			nulled += 1;
 		while (strs[j][i])
 		{
 			if (!strs[j][i + 1])
@@ -62,7 +54,7 @@ unsigned int	ft_lconcatenate(char *dest, char *src, unsigned int size,
 			break ;
 		i++;
 	}
-	while ((i + j) < (size))
+	while ((i + j) < size)
 	{
 		if (!src[j] || (((i + j) == (size - 1)) && nulled))
 			break ;
@@ -81,13 +73,16 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	unsigned int	ldst;
 	unsigned int	nulled;
 
-	lsrc = ft_strlen(src);
-	ldst = ft_strlen(dest);
+	lsrc = 0;
+	ldst = 0;
+	while (src[lsrc])
+		lsrc++;
+	while (dest[ldst])
+		ldst++;
 	nulled = ft_lconcatenate(dest, src, size, ldst);
 	if (!nulled && (size > ldst))
 		return (size);
-	if (ldst > size)
-		return (lsrc + size);
-	else
-		return (lsrc + ldst);
+	if (size < ldst)
+		return (size + lsrc);
+	return (ldst + lsrc);
 }
