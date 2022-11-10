@@ -6,20 +6,35 @@
 /*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:05:38 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/09 21:54:04 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/10 22:11:11 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-    unsigned int	ldst;
-    unsigned int	left;
+	unsigned int	dpos0;
+	unsigned int	dpos;
+	unsigned int	spos;
 
-    ldst = 0;
-    left = size;
-    while (dest[ldst] && left--)
-        ldst++;
-    
-    // The algo revolves arround how much size left
-    // 
+	dpos = 0;
+	while (size && dest[dpos])
+	{
+		dpos++;
+		size--;
+	}
+	dpos0 = dpos;
+	spos = 0;
+	while (src[spos])
+	{
+		if (size > 1)
+		{
+			dest[dpos] = src[spos];
+			dpos++;
+			size--;
+		}
+		spos++;
+	}
+	if (size)
+		dest[dpos] = '\0';
+	return (dpos0 + spos);
 }

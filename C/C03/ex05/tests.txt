@@ -1,0 +1,105 @@
+✨🌟😈 C03 EX05 EVIL TESTS 😈🌟✨
+
+😈🤩 Made by a psychopath with passion 🤩😈
+
+Happy path :)
+	"Hello" " world" "12"
+		-> 11 "Hello world"
+
+#########################################
+
+Oops wrong size, forgot \0
+	"Hello" " world" "11"
+		-> 11 "Hello worl"
+
+Copy nothing
+	"Hello" " world" "5"
+		-> 11 "Hello"
+
+I SAID NOTHING !!!
+	"Hello" " world" "0"
+		-> 6 "Hello"
+
+Ok... A bit more
+	"Hello" " world" "1"
+		-> 7 "Hello"
+
+More, more!!
+	"Hello" " world" "3"
+		-> 9 "Hello"
+
+MOTTO HOSHII!!
+	"Hello" " world" "99"
+		-> 11 "Hello world"
+
+#########################################
+
+Why so negative!! (underflow converted to 4294967295)
+	"Hello" " world" "-1"
+		-> 11 "Hello world"
+
+#########################################
+
+Empty dest, size too small
+	"" "world" "3"
+		-> 5 "wo"
+
+Empty dest, size still too small (\0 for null)
+	"" "world" "5"
+		-> 5 "worl"
+
+Empty dest, size just enough
+	"" "world" "6"
+		-> 5 "world"
+
+Empty dest, too much size
+	"" "world" "18"
+		-> 5 "world"
+
+#########################################
+
+Empty src, but why doing that ???
+	"Hello" "" "0"
+		-> 0 "Hello"
+
+Empty src, a target size, but why doing that ???
+	"Hello" "" "12"
+		-> 5 "Hello"
+
+#########################################
+
+[X] Empty dest. Empty src. Does size matter ?
+	"" "" "10"
+		-> 0 ""
+
+Uh ?
+	"" "" "0"
+		-> 0 ""
+
+Uh ?????
+	"" "" "5"
+		-> 0 ""
+
+#########################################
+
+Special chars (should) do nothing here
+	"\n" "\n" "3"
+		-> 4 "\n" (remember - 2 + null)
+
+Special chars (should) do nothing here too
+	"\n" "\n" "4"
+			-> 4 "\n\"
+
+Special chars (should) do nothing here too too
+	"\n" "\0" "5"
+			-> 4 "\n\0"
+
+Special chars (should) do nothing here 4
+	"\x0" "\xa" "4"
+			-> 6 "\x0"
+
+#########################################
+
+[X] src or dest not nulled
+	No protection against these cases in the new version learned from
+	newbsd... Will deepthought consider this as a problem?
