@@ -1,0 +1,52 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    tests.txt                                          :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/11/10 22:42:03 by jgermany          #+#    #+#              #
+#    Updated: 2022/11/10 22:50:34 by jgermany         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+C04 EX00 EVIL TESTS
+
+😈🤩 Made by a psychopath with passion 🤩😈
+
+Happy path :)
+	"Hello"
+		-> 5
+
+	"ban"
+		-> 3
+
+	"42_piscine_09_22"
+		-> 16
+
+#########################################
+
+Oops, nothing to process
+	""
+		-> 0
+
+#########################################
+
+What does an emoji do ?
+	"😈"
+		-> 4 (WTF)
+
+Special chars (should) do nothing here
+	"\0"
+		-> 2
+	"\n\n"
+		-> 4
+	"\x0"
+		-> 3
+	"\x0\xa"
+		-> 6
+
+#########################################
+
+[X] src or dest not nulled
+	No protection against these cases, but it's not a problem

@@ -1,0 +1,52 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    tests.txt                                          :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/11/10 22:42:03 by jgermany          #+#    #+#              #
+#    Updated: 2022/11/10 23:09:07 by jgermany         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+C04 - EX01 EVIL TESTS
+
+😈🤩 Made by a psychopath with passion 🤩😈
+
+Happy path :)
+	"Hello"
+		-> "Hello"
+
+	"Salut les piscineux"
+		-> "Salut les piscineux"
+
+	"おっ、向かってくるのか？"
+		-> "おっ、向かってくるのか？"
+
+#########################################
+
+Oops, nothing to process
+	""
+		->
+
+#########################################
+
+What does an emoji do ?
+	"😈"
+		-> 😈
+
+Special chars (should) do nothing here
+	"\0"
+		-> "\0"
+	"\n\n"
+		-> "\n\n"
+	"\x0"
+		-> "\x0"
+	"\x0\xa"
+		-> "\x0\xa"
+
+#########################################
+
+[X] src or dest not nulled
+	No protection against these cases, but it's not a problem

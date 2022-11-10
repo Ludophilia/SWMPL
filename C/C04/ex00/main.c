@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgermany <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:56:15 by jgermany          #+#    #+#             */
-/*   Updated: 2022/09/29 17:28:03 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/10 22:33:01 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,5 @@ int	main(int argc, char **argv)
 		return (1);
 	printf("ft_strlen(\'%s\') = %i\n", argv[1], ft_strlen(argv[1]));
 	printf("strlen(\'%s\') = %li\n", argv[1], strlen(argv[1]));
-	//printf("ft_strlen(\'%s\') = %i\n", "\\n", ft_strlen("\n"));
 	return (0);
 }
