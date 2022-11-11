@@ -1,4 +1,4 @@
-✨🌟😈 C07 EX05 EVIL TESTS 😈🌟✨
+✨🌟😈 EVIL TESTS 😈🌟✨
 
 😈🤩 Made by a psychopath with passion 🤩😈
 
@@ -11,17 +11,17 @@ Happy path :)
 No charset
 	"lol" ""
 		Expected 1 word
-	"" ""
+	"" "" ❌
 		Expected 0 word
 
 No str (len_str == 0)
-	"" " "
+	"" " " ❌
 		Expected 0 word
-	"" "bella"
+	"" "bella" ❌
 		Expected 0 word
 
 (len_str < len_charset) && (len_str > 0)
-	"bell" "bella"
+	"bell" "bella" ❌
 		Expected 1 word
 
 Charset at the end of str and NO EMPTY STR
@@ -49,11 +49,9 @@ Too many charset and NO EMPTY STR
 		Expected 3 words
 
 Incomplete charset
-	"XYsalutXYZçaYZva" "XYZ"
-		Expected 2 words
-	" salut  ça va " "  "
+	"XYsalutXYZçaYZva" "XYZ" ❌
 		Expected 2 words
 
 Incomplete charset and NO EMPTY STR
-	"  salut  ça va " "  "
+	"  salut  ça va " "  " ❌
 		Expected 2 words
