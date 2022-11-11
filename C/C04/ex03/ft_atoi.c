@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgermany <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 18:46:46 by jgermany          #+#    #+#             */
-/*   Updated: 2022/10/01 18:02:21 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/11 18:07:05 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ int	is_illeg_at(int i, char *str)
 {
 	if (!(is_space(str[i]) || is_sign(str[i]) || is_num(str[i])))
 		return (1);
-	else if (!(is_space(str[i + 1]) || is_sign(str[i + 1]))
-		&& is_space(str[i]))
-		return (1);
-	else if (!(is_sign(str[i + 1]) || is_num(str[i + 1]))
+	if (!(is_sign(str[i + 1]) || is_num(str[i + 1]))
 		&& is_sign(str[i]))
 		return (1);
 	return (0);
