@@ -6,7 +6,7 @@
 /*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 17:20:26 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/13 22:22:11 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/14 17:56:11 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,61 +17,44 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-int	is_dupl(char c, char *cmp)
-{
-	int	i;
-
-	i = 0;
-	while (cmp[i])
-	{
-		if (c == cmp[i])
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 int	ft_check_base(char *base)
 {	
-	char	cmp[1000];
 	int		i;
-	int		k;
+	int		j;
 
 	i = 0;
-	k = 0;
-	cmp[0] = '\0';
-	while (base[i] && (i < 1000))
+	while (base[i])
 	{
-		if (base[i] == '+' || base[i] == '-')
+		if ((i == 0) && (base[i] == '+' || base[i] == '-'))
 			return (0);
-		if (!is_dupl(base[i], cmp))
+		j = 1;
+		while (base[i + j])
 		{
-			cmp[k] = base[i];
-			cmp[k + 1] = '\0';
-			k++;
+			if (base[i + j] == base[i] || base[i + j] == '+'
+				|| base[i + j] == '-')
+				return (0);
+			j++;
 		}
-		else
+		if ((i == 0) && (j == 1))
 			return (0);
 		i++;
 	}
-	if (i < 2)
-		return (0);
 	return (i);
 }
 
 void	ft_putnbr_base(int nbr, char *base)
 {
-	int		rdx;
+	int		radix;
 
-	rdx = ft_check_base(base);
-	if (!rdx)
+	radix = ft_check_base(base);
+	if (!radix)
 		return ;
-	if (nbr >= rdx || nbr <= -rdx)
-		ft_putnbr_base(nbr / rdx, base);
-	if (nbr < 0 && nbr > -rdx)
+	if (nbr >= radix || nbr <= -radix)
+		ft_putnbr_base(nbr / radix, base);
+	if (nbr < 0 && nbr > -radix)
 		ft_putchar('-');
 	if (nbr < 0)
-		ft_putchar(base[-(nbr % rdx)]);
+		ft_putchar(base[-(nbr % radix)]);
 	else
-		ft_putchar(base[nbr % rdx]);
+		ft_putchar(base[nbr % radix]);
 }
