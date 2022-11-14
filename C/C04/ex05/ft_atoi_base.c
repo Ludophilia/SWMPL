@@ -6,50 +6,13 @@
 /*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 18:46:46 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/11 19:13:56 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/14 23:50:14 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_dupl(char c, char *cmp)
+int	is_sign(char c)
 {
-	int	i;
-
-	i = 0;
-	while (cmp[i])
-	{
-		if (c == cmp[i])
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	check_base(char *base)
-{	
-	char	cmp[1000];
-	int		i;
-	int		k;
-
-	i = 0;
-	k = 0;
-	cmp[0] = '\0';
-	while (base[i] && (i < 1000))
-	{
-		if (base[i] == '+' || base[i] == '-' || base[i] == '\x20')
-			return (0);
-		if (!is_dupl(base[i], cmp))
-		{
-			cmp[k] = base[i];
-			cmp[k + 1] = '\0';
-			k++;
-		}
-		else
-			return (0);
-		i++;
-	}
-	if (i < 2)
-		return (0);
-	return (i);
+	return (c == '-' || c == '+');
 }
 
 int	find_id(char c, char *base)
@@ -66,20 +29,38 @@ int	find_id(char c, char *base)
 	return (-1);
 }
 
+int	check_base(char *base)
+{	
+	int		i;
+	int		j;
+
+	i = 0;
+	while (base[i])
+	{
+		if ((i == 0) && is_sign(base[i]))
+			return (0);
+		j = 1;
+		while (base[i + j])
+		{
+			if (base[i + j] == base[i] || is_sign(base[i + j]))
+				return (0);
+			j++;
+		}
+		if ((i == 0) && (j == 1))
+			return (0);
+		i++;
+	}
+	return (i);
+}
+
 int	is_illeg_at(int i, char *str, char *base)
 {
-	if (!(((str[i] >= '\t' && str[i] <= '\r') || str[i] == '\x20') \
-		|| (str[i] == '-' || str[i] == '+') || \
-		find_id(str[i], base) >= 0))
+	
+	if (!(((str[i] >= '\t' && str[i] <= '\r') || (str[i] == '\x20'))
+		|| is_sign(str[i]) || find_id(str[i], base) >= 0))
 		return (1);
-	else if (!((str[i + 1] == '-' || str[i + 1] == '+') \
-		|| ((str[i + 1] >= '\t' && str[i + 1] <= '\r') \
-		|| str[i + 1] == '\x20')) && ((str[i] >= '\t' \
-		&& str[i] <= '\r') || str[i] == '\x20'))
-		return (1);
-	else if (!((str[i + 1] == '-' || str[i + 1] == '+') \
-		|| find_id(str[i + 1], base) >= 0) && \
-		(str[i] == '-' || str[i] == '+'))
+	if (!(is_sign(str[i + 1]) || find_id(str[i + 1], base) >= 0)
+		&& is_sign(str[i]))
 		return (1);
 	return (0);
 }
@@ -88,26 +69,27 @@ int	ft_atoi_base(char *str, char *base)
 {	
 	int	i;
 	int	res;
-	int	sgn;
-	int	rdx;
+	int	sign;
+	int	radix;
 
 	i = 0;
 	res = 0;
-	sgn = 1;
-	rdx = check_base(base);
-	if (!rdx)
+	sign = 1;
+	radix = check_base(base);
+	if (!radix)
 		return (0);
 	while (str[i])
 	{
-		if (is_illeg_at(i, str, base))
+		if (!(is_space(str[i]) || is_sign(str[i]) || id(str[i], base) >= 0) ||
+			(!(is_sign(str[i + 1]) || id(str[i + 1], base) >= 0)
+			&& is_sign(str[i])))
 			break ;
 		if (str[i] == '-')
-			sgn *= -1;
+			sign *= -1;
 		else if (find_id(str[i], base) >= 0)
-			res = (rdx * res) + find_id(str[i], base);
-		if (!(find_id(str[i + 1], base) >= 0)
-			&& find_id(str[i], base) >= 0)
-			return (sgn * res);
+			res = (radix * res) + find_id(str[i], base);
+		if (!(find_id(str[i + 1], base) >= 0) && find_id(str[i], base) >= 0)
+			return (sign * res);
 		i++;
 	}
 	return (0);

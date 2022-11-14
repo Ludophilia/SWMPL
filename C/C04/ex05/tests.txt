@@ -6,7 +6,7 @@
 #    By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 22:42:03 by jgermany          #+#    #+#              #
-#    Updated: 2022/11/14 22:26:14 by jgermany         ###   ########.fr        #
+#    Updated: 2022/11/14 23:40:30 by jgermany         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,7 +90,7 @@ at least ?)
 	"-53G7F549" "0123456789ABCDEFG"
 		-> "-2147483648"
 
-[🟢] Mach, yelling: "INCORRECT BASE YOU MORON!"
+[🔴] Mach, yelling: "INCORRECT BASE YOU MORON!"
 	"657" ""
 		-> "0"
 	"erf" ""
@@ -114,7 +114,7 @@ at least ?)
 	"- 2 2 202" "0 2"
 		-> "0"
 
-[🟢] Wait, you're (not) supposed to start like this !
+[🔴] Wait, you're (not) supposed to start like this !
 	"              ++--1111111111111111111111111111111" "01"
 		-> "2147483647"
 	"				+--A02220281" "0123456789A"
@@ -124,12 +124,14 @@ at least ?)
 	"7FFFFFFF" "0123456789ABCDEF"
 		-> "2147483647"
 	
+	"a1111" "01"
+		-> "0"
 	"dumb++--+--53G7F548" "0123456789ABCDEFG"
 		-> "0"
 	"\ngl+--780" "0123456789"
 		-> "0"
 
-[🟢] What follows a space is ONLY... a space OR a sign ?
+[🔴] What follows a space is ONLY... a space OR a sign ?
 	"		      ++++--+--++7FFFFFFF" "0123456789ABCDEF"
 		-> "2147483647"
 	" 		\++++--+2147483647" "0123456789"
@@ -137,12 +139,12 @@ at least ?)
 	"			desudesu++++--+53G7F548" "0123456789ABCDEFG"
 		-> "0"
 
-[🔴] Wait...  What follows spaces is ONLY, ONLY a sign or a space ? 
+[🟢] Wait...  What follows spaces is ONLY, ONLY a sign or a space ? 
 NO NUMBERS? (HOT CASE 🌶️)
 	"		      2147++++--+--++2147483647" "0123456789"
 		-> "2147"
 
-[🟢] What follows sign(s) is ONLY... a sign OR a number ?
+[🔴] What follows sign(s) is ONLY... a sign OR a number ?
 	" ----+--+AAA" "0123456789A"
 		-> "1330"
 	" ----+--+		   AAA" "0123456789A"
