@@ -6,15 +6,15 @@
 #    By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 22:42:03 by jgermany          #+#    #+#              #
-#    Updated: 2022/11/11 18:24:35 by jgermany         ###   ########.fr        #
+#    Updated: 2022/11/14 22:27:44 by jgermany         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-C04 - EX03 EVIL TESTS
+C04X03
 
-😈🤩 Made by a psychopath with passion 🤩😈
+😈🤩 Evil tests made by a psychopath with passion 🤩😈
 
-[OK] Easy path
+[🟢] Easy path
 	"1"
 		-> 1
 	"42"
@@ -26,9 +26,7 @@ C04 - EX03 EVIL TESTS
 	"-123456789"
 		-> -123456789
 
-#########################################
-
-[OK] POWER OF TEN (new metal band)
+[🟢] POWER OF TEN (new metal band)
 	"10"
 		-> 10
 	"-100"
@@ -40,17 +38,7 @@ C04 - EX03 EVIL TESTS
 	"100000"
 		-> "100000"
 
-#########################################
-
-[OK] EXTREME SPORTS (INT_MIN, INT_MAX)
-	"-2147483648"
-		-> "-2147483648"
-	"+2147483647"
-		-> "2147483647"
-
-#########################################
-
-[OK] Zero is zero, right? RIGHT?
+[🟢] Zero is zero, right? RIGHT?
 	"0"
 		-> 0
 	"035789468"
@@ -60,9 +48,13 @@ C04 - EX03 EVIL TESTS
 	"0000000007"
 		-> 7
 
-#########################################
+[🟢] EXTREME SPORTS 2**31
+	"-2147483648"
+		-> "-2147483648"
+	"+2147483647"
+		-> "2147483647"
 
-[OK] Too much negative energy
+[🟢] Too much negative energy
 	"-0"
 		-> -0
 	"-15"
@@ -74,9 +66,7 @@ C04 - EX03 EVIL TESTS
 	"------447961"
 		-> 447961
 
-#########################################
-
-[OK] Overly positive good waves :)
+[🟢] Overly positive good waves :)
 	"+0"
 		-> -0
 	"+14"
@@ -88,9 +78,7 @@ C04 - EX03 EVIL TESTS
 	"++++++447961"
 		-> 447961
 
-#########################################
-
-[OK] Too many signs, i'm not imagining anything!...
+[🟢] Too many signs, i'm not imagining anything!...
 	"+-+-+0"
 		-> 0
 	"---+---+255"
@@ -102,9 +90,7 @@ C04 - EX03 EVIL TESTS
 	"+-++--+--++2147483648"
 		-> -2147483648
 
-#########################################
-
-[OK] Wait, you're (not) supposed to start like this !
+[🟢] Wait, you're (not) supposed to start like this !
 	"              ++--780"
 		-> 780
 	"				++--780"
@@ -119,9 +105,7 @@ C04 - EX03 EVIL TESTS
 	"\n+--780"
 		-> 0
 
-#########################################
-
-[OK] What follows a space is ONLY... a space OR a sign ?
+[🟢] What follows a space is ONLY... a space OR a sign ?
 	"		      ++++--+--++2147483647"
 		-> 2147483647
 
@@ -130,13 +114,11 @@ C04 - EX03 EVIL TESTS
 	"			desu++++--+2147483647"
 		-> 0
 
-[OK] Wait... ONLY a sign ?
+[🟢] Wait... ONLY a sign ?
 	"		      2147++++--+--++2147483647"
 		-> 2147
 
-#########################################
-
-[OK] What follows sign(s) is ONLY... a sign OR a number ?
+[🟢] What follows sign(s) is ONLY... a sign OR a number ?
 	" ----+--+999"
 		-> 999
 	" ----+--+  		999"
@@ -146,9 +128,7 @@ C04 - EX03 EVIL TESTS
 	" ----+--+\xa999"
 		-> 0
 
-#########################################
-
-[OK] Jack, any breach in our little agreement and you're dead!! (just first 
+[🟢] Jack, any breach in our little agreement and you're dead!! (just first 
 series of numbers)
 	"     ---+--+1234ab567"
 		-> -1234
@@ -162,6 +142,3 @@ series of numbers)
 		-> -1234
 	"41     ---+--+1234ab"
 		-> 41
-
-#########################################
-
