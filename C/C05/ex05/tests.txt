@@ -6,7 +6,7 @@
 #    By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 22:42:03 by jgermany          #+#    #+#              #
-#    Updated: 2022/11/15 22:54:46 by jgermany         ###   ########.fr        #
+#    Updated: 2022/11/15 23:01:34 by jgermany         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,14 @@ number such as i * i == nb.
 		-> -1
 	"-2147483647"
 		-> -1
+
+[🔴] Sqrt 0 ??
+
+[🔴] Those integer sqrt certainly exists...
+
+[🔴] Those definitely NOT (returns 0)
+
+[🔴] EXTREME SPORTS 5 - GOLDEN EXTREMES
 
 ########################################################################
 
