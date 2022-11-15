@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgermany <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 22:13:56 by jgermany          #+#    #+#             */
-/*   Updated: 2022/10/04 12:43:48 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/15 22:32:27 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ int	main(int argc, char **argv)
 {
 	if (argc != 2)
 		return (1);
-	printf("ft_fibonacci: %i\n",
+	printf("ft_fibonacci: %d\n",
 		ft_fibonacci(atoi(argv[1])));
 }
