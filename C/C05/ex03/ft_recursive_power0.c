@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterative_power.c                               :+:      :+:    :+:   */
+/*   ft_recursive_power0.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 22:56:38 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/15 19:30:35 by jgermany         ###   ########.fr       */
+/*   Created: 2022/11/15 20:57:43 by jgermany          #+#    #+#             */
+/*   Updated: 2022/11/15 21:01:19 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_iterative_power(int nb, int power)
-{
-	int	res;
-
-	if (power < 0)
-		return (0);
+int	ft_recursive_power(int nb, int power)
+{	
 	if (power == 0)
 		return (1);
-	res = 1;
-	while (power)
-	{
-		res *= nb;
-		power--;
-	}
-	return (res);
+	else if (power == 1)
+		return (nb);
+	else if (power < 0 && nb > 0)
+		return (1 / (nb * ft_recursive_power(nb, -power - 1)));
+	else if (power < 0 && nb < 0)
+		return (1 / (nb * ft_recursive_power(-nb, -power - 1)));
+	else if (nb < 0)
+		return (nb * ft_recursive_power(-nb, power - 1));
+	return (nb * ft_recursive_power(nb, power - 1));
 }

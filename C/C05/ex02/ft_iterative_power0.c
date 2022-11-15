@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterative_power.c                               :+:      :+:    :+:   */
+/*   ft_iterative_power0.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 22:56:38 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/15 19:30:35 by jgermany         ###   ########.fr       */
+/*   Created: 2022/11/15 19:18:35 by jgermany          #+#    #+#             */
+/*   Updated: 2022/11/15 19:35:13 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_iterative_power(int nb, int power)
 {
-	int	res;
+	int	nb_sign;
+	int	pow_sign;
 
-	if (power < 0)
-		return (0);
-	if (power == 0)
+	nb_sign = 1;
+	pow_sign = 1;
+	if (!power)
 		return (1);
-	res = 1;
-	while (power)
-	{
-		res *= nb;
-		power--;
-	}
-	return (res);
+	if (nb < 0 && power % 2 == 0)
+		nb_sign *= -1;
+	if (power < 0)
+		pow_sign *= -1;
+	while (--power > 0)
+		nb *= nb;
+	if (pow_sign == -1)
+		return (1 / (nb * nb_sign));
+	return (nb * nb_sign);
 }
