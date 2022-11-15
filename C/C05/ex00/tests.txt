@@ -1,0 +1,54 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    tests.txt                                          :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/11/10 22:42:03 by jgermany          #+#    #+#              #
+#    Updated: 2022/11/15 18:34:00 by jgermany         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+C05X00 🟢🔴
+
+Evil tests made with 😈😈😈 passion
+
+Goal : ft_iterative_factorial applies the op factorial on a number nb. 
+The factorial is the product of every other integer i such as 0 < i <= nb.
+(https://fr.wikipedia.org/wiki/Factorielle)
+
+As ft_iterative_factorial returns only integers (int), the max result returned
+is INT_MAX or 2**31-1 or 2 147 483 647
+
+[🟢] We happy few
+	"2"
+		-> 2
+	"3"
+		-> 6
+	"5"
+		-> 120
+	"8"
+		-> 40320
+	"11"
+		-> 39916800
+	"12"
+		-> 479001600
+	time (gww ft_iterative_factorial.c main.c && ./a.out "12")
+		-> below 0.05s
+	"13"
+		-> 6227020800 (overflow: 1932053504)
+	
+[🟢] No means no honey :)
+	"0"
+		-> 1
+	"1"
+		-> 1
+
+[🟢] Let's go below the surface (and let's find nothing in the proccess)
+	"-1"
+		-> 0
+	"-17"
+		-> 0
+	"-2147483648"
+		-> 0
