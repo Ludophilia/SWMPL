@@ -1,0 +1,64 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    tests.txt                                          :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/11/10 22:42:03 by jgermany          #+#    #+#              #
+#    Updated: 2022/11/15 22:54:46 by jgermany         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+C05X05 🟢🔴
+
+Evil tests made with 😈😈😈 passion
+
+Context : ft_sqrt(nb) returns, if exists, i the integer square root of nb, a
+number such as i * i == nb. 
+
+[🔴] No imagination
+	"-1"
+		-> -1
+	"-5"
+		-> -1
+	"-255"
+		-> -1
+	"-4242"
+		-> -1
+	"-2147483647"
+		-> -1
+
+########################################################################
+
+[🔴] Let it work just to see how it goes
+	"5"
+		-> 5
+	"9"
+		-> 34
+	"13"
+		-> 233
+	"25" 
+		-> 75025
+	"36"
+		-> 14930352
+
+int    main(void)
+{
+	printf("sqrt(-3)) = %i\n", ft_sqrt(-3));
+	printf("sqrt(0)) = %i\n", ft_sqrt(0));
+	printf("sqrt(25) = %i\n", ft_sqrt(25));
+	printf("sqrt(36) = %i\n", ft_sqrt(36));
+	printf("sqrt(625)) = %i\n", ft_sqrt(625)); // 25
+	printf("sqrt(62500)) = %i\n", ft_sqrt(62500)); // 250
+}
+
+[🔴] HIGH PERFORMANCE
+	"45"
+		-> 1134903170
+	time (gww ft_fibonacci.c main.c && ./a.out "45")
+		-> below 1s (🔴 failed - over 11s)
+	"47"
+		-> 2971215073 (overflow: -1323752223)
+	time (gww ft_fibonacci.c main.c && ./a.out "45")
+		-> below 1s (🔴 failed - over 30s)
