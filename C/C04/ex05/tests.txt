@@ -6,11 +6,11 @@
 #    By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 22:42:03 by jgermany          #+#    #+#              #
-#    Updated: 2022/11/14 23:40:30 by jgermany         ###   ########.fr        #
+#    Updated: 2022/11/15 17:27:42 by jgermany         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-C04X05 
+C04X05 🟢🔴
 
 Evil tests made with 😈😈😈 passion
 
@@ -90,7 +90,7 @@ at least ?)
 	"-53G7F549" "0123456789ABCDEFG"
 		-> "-2147483648"
 
-[🔴] Mach, yelling: "INCORRECT BASE YOU MORON!"
+[🟢] Mach, yelling: "INCORRECT BASE YOU MORON!"
 	"657" ""
 		-> "0"
 	"erf" ""
@@ -103,18 +103,18 @@ at least ?)
 		-> "0"
 	"KKKKKKKKKKK" "KKK"
 		-> "0"
-	"-1+0" "+01"
+	"- 2 2 202" "0 2"
 		-> "0"
-	"99957-" "-579"
+	"-1+0" "+01"
 		-> "0"
 	"-efG+0" "0daef1Ghb+"
 		-> "0"
+	"99957-" "-579"
+		-> "0"
 	"579-zf" "579ABCDEfz123-"
 		-> "0"
-	"- 2 2 202" "0 2"
-		-> "0"
 
-[🔴] Wait, you're (not) supposed to start like this !
+[🟢] Wait, you're (not) supposed to start like this !
 	"              ++--1111111111111111111111111111111" "01"
 		-> "2147483647"
 	"				+--A02220281" "0123456789A"
@@ -131,7 +131,7 @@ at least ?)
 	"\ngl+--780" "0123456789"
 		-> "0"
 
-[🔴] What follows a space is ONLY... a space OR a sign ?
+[🟢] What follows a SPACE is ONLY... a space OR a sign ?
 	"		      ++++--+--++7FFFFFFF" "0123456789ABCDEF"
 		-> "2147483647"
 	" 		\++++--+2147483647" "0123456789"
@@ -139,12 +139,12 @@ at least ?)
 	"			desudesu++++--+53G7F548" "0123456789ABCDEFG"
 		-> "0"
 
-[🟢] Wait...  What follows spaces is ONLY, ONLY a sign or a space ? 
+[🟢] Wait...  What follows a SPACE is ONLY a sign OR a space ? 
 NO NUMBERS? (HOT CASE 🌶️)
 	"		      2147++++--+--++2147483647" "0123456789"
 		-> "2147"
 
-[🔴] What follows sign(s) is ONLY... a sign OR a number ?
+[🟢] What follows a SIGN is ONLY... a sign OR a number ?
 	" ----+--+AAA" "0123456789A"
 		-> "1330"
 	" ----+--+		   AAA" "0123456789A"
@@ -154,8 +154,8 @@ NO NUMBERS? (HOT CASE 🌶️)
 	" ----+--+\xaAAA" "0123456789A"
 		-> "0"
 
-[🟢] What happens when a number is made with no element of the base ?
-No number...
+[🟢] Q: What happens when a number is made with no element of the base ?
+A: Then there is NO NUMBER et result is 0.
 	"     ---+--+1234" "ABC"
 		-> "0"
 	"     ---+--+1234C" "ABC"
@@ -163,7 +163,7 @@ No number...
 	"     ---+--+C1234" "ABC"
 		-> "-2"
 
-[🟢] Jack, any breach in our little agreement and you're dead!! (just first 
+[🟢] Jack, any breach in our little agreement and *clap* DONE!! (just first 
 series of numbers)
 	"     ---+--+1234ab567" "0123456789"
 		-> "-1234"
