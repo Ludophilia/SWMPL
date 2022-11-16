@@ -6,15 +6,16 @@
 #    By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 22:42:03 by jgermany          #+#    #+#              #
-#    Updated: 2022/11/16 18:24:55 by jgermany         ###   ########.fr        #
+#    Updated: 2022/11/16 19:08:22 by jgermany         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-C05X06 🟢🔴
+C05X07 🟢🔴
 
 Evil tests made with 😈😈😈 passion
 
-Context : ft_is_prime(nb) returns 1 if nb is a prime number, 0 if it's not.
+Context : ft_find_next_prime(nb) returns nb if it's a prime number, the next
+prime if not.
 A prime number is a number that has only two divisors: 1 and itself.
 
 i is a divisor of nb if and only if nb % 0 == 0.
@@ -22,94 +23,90 @@ i is a divisor of nb if and only if nb % 0 == 0.
 Every nb has 1 and itself as divisor. For a prime, those should be the only
 ones.
 
-[🟢] Those integer are certainly primes...
+[🟢] Mirror, mirror... Who is a primest number ? 
 
-	"2"
-		-> 1
-	"19" 
-		-> 1
-	"47"
-		-> 1
-	"61"
-		-> 1
-	"181"
-		-> 1
-	"619"
-		-> 1
-	"937"
-		-> 1
-	"5791"
-		-> 1	
-	"24083"
-		-> 1
-	"33751"
-		-> 1
-	"161323"
-		-> 1
-	"617761"
-		-> 1
-	"4079477"
-		-> 1
+	"3"
+		-> 3
+	"23" 
+		-> 23
+	"53"
+		-> 53
+	"67"
+		-> 67
+	"191"
+		-> 191
+	"631"
+		-> 631
+	"977"
+		-> 937
+	"5807"
+		-> 5807	
+	"24121"
+		-> 24121
+	"33769"
+		-> 33769
+	"161387"
+		-> 161387
+	"617809"
+		-> 617809
+	"4081933"
+		-> 4081933
 
-[🟢] ...and those definitely NOT
+[🟢] That's life: there always a number primer than you :/
 
 	"0"
-		-> 0
+		-> 2
 	"1"
-		-> 0
+		-> 2
 	"15"
-		-> 0
+		-> 17
 	"50"
-		-> 0
+		-> 53
 	"76"
-		-> 0
+		-> 79
 	"294"
-		-> 0
+		-> 307
 	"657"
-		-> 0
+		-> 659
 	"2232"
-		-> 0
+		-> 2237
 	"7887"
-		-> 0
+		-> 7901
 	"61761"
-		-> 0
+		-> 61781
 	"578437"
-		-> 0
+		-> 578441
 	"15978437"
-		-> 0
+		-> 15978481
 	
 [🟢] Let's break a sweat (🌶️ hot case)
 	"79798371"
-		-> 0
+		-> 79798387
 	"130279397"
-		-> 0
-	"2138322564"
-		-> 0
-	time (gww ft_is_prime.c main.c && ./a.out "2138322564")
-		-> below 0.1s total
+		-> 130279411
 	"2147395600"
-		-> 0
+		-> 2147395609
 	"2147483629"
-		-> 1
-	time (gww ft_is_prime.c main.c && ./a.out "2147483629")
+		-> 2147483629
+	time (gww ft_find_next_prime.c main.c && ./a.out "2147483629")
 		-> below 0.1s total
 	"2147483647"
-		-> 1
-	time (gww ft_is_prime.c main.c && ./a.out "2147483647")
+		-> 2147483647
+	time (gww ft_find_next_prime.c main.c && ./a.out "2147483647")
 		-> below 0.1s total
 
-[🟢] Who has the luxury of being negative in his prime?
+[🟢] Again: Who has the luxury of being negative in his prime?
 	"-1"
-		-> 0
+		-> 2
 	"-5"
-		-> 0
+		-> 2
 	"-255"
-		-> 0
+		-> 2
 	"-4242"
-		-> 0
+		-> 2
 	"-500305"
-		-> 0
+		-> 2
 	"-72577984"
-		-> 0
+		-> 2
 	"-2147483648"
-		-> 0
+		-> 2
