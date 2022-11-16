@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_params.c                                   :+:      :+:    :+:   */
+/*   ft_sort_params0.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 22:06:33 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/16 21:55:29 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/16 21:34:15 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,45 +26,65 @@ int	ft_strcmp(char *s1, char *s2)
 	return (0);
 }
 
-void	ft_sort_tab(char **tab, int size)
+int	ft_sort_check(char **tab, int size)
 {
 	int	i;
-	int	j;
-	int	t;
 
 	i = 0;
 	while ((i + 1) < size)
 	{
-		j = 0;
-		while ((j + 1) < (size - i))
+		if (ft_strcmp(tab[i], tab[i + 1]) > 0)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+void	ft_sort_tab(char **tab, int size)
+{
+	int		i;
+	char	*t;
+
+	i = 0;
+	while (ft_sort_check(tab, size))
+	{
+		if (!((i + 1) < size))
+			i = 0;
+		if (ft_strcmp(tab[i], tab[i + 1]) > 0)
 		{
-			if (ft_strcmp(tab[j], tab[j + 1]) > 0)
-			{
-				t = tab[j];
-				tab[j] = tab[j + 1];
-				tab[j + 1] = t;
-			}
-			j++;
+			t = tab[i];
+			tab[i] = tab[i + 1];
+			tab[i + 1] = t;
 		}
+		i++;
+	}
+}
+
+void	ft_putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		write(1, (str + i), 1);
 		i++;
 	}
 }
 
 int	main(int argc, char **argv)
 {
-	if (argc < 2)
+	int	i;
+
+	if (argc == 1)
 		return (1);
-	argv += 1;
-	ft_sort_tab(argv, argc - 1); // Zhat s this supposed to do ? I don't remember
-	while (*argv)
+	i = 0;
+	ft_sort_tab(argv + 1, argc - 1);
+	while (argv[i + 1])
 	{
-		while (**argv)
-		{
-			write(1, *argv, 1);
-			*argv += 1;
-		}
-		write(1, "\n", 1);
-		argv += 1;
+		ft_putstr(argv[i + 1]);
+		ft_putstr("\n");
+		i++;
 	}
 	return (0);
 }
