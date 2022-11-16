@@ -3,44 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgermany <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 22:06:33 by jgermany          #+#    #+#             */
-/*   Updated: 2022/09/28 22:39:26 by jgermany         ###   ########.fr       */
+/*   Created: 2022/11/16 19:52:37 by jgermany          #+#    #+#             */
+/*   Updated: 2022/11/16 20:18:18 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
-void	ft_putstr(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		ft_putchar(str[i]);
-		i++;
-	}
-}
-
 int	main(int argc, char **argv)
 {
-	int	i;
-
-	if (argc == 1)
+	if (argc < 2)
 		return (1);
-	i = 1;
-	while (i < argc)
+	argv += 1;
+	while (*argv)
 	{
-		ft_putstr(argv[i]);
-		ft_putstr("\n");
-		i++;
+		while (**argv)
+		{	
+			write(1, *argv, 1);
+			*argv += 1;
+		}
+		write(1, "\n", 1);
+		argv += 1;
 	}
 	return (0);
 }

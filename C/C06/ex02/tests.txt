@@ -1,0 +1,57 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    tests.txt                                          :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/11/10 22:42:03 by jgermany          #+#    #+#              #
+#    Updated: 2022/11/16 21:14:51 by jgermany         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+C06X02 🟢🔴
+
+Evil tests made with 😈😈😈 passion
+
+Context : Create a program that prints via write() the parameter names on
+stdout, except the program name
+
+[🟢] Chuckling: "Too short, way to short :0" 
+	(no args passed)
+		-> Error
+
+[🟢] Sweat + reversed pyramid
+	""
+		-> ""
+	
+	1
+		-> 1
+	
+	1 2
+		->  2
+			1
+	
+	1 2 3 4 5 6 7 8 9 0
+		->	0
+			9
+			8
+			7
+			6
+			5
+			4
+			3
+			2
+			1
+	
+	1 22 333 4444 55555 666666 7777777 88888888 999999999 0000000000
+		->	0000000000
+			999999999
+			88888888
+			7777777
+			666666
+			55555
+			4444
+			333
+			22
+			1
