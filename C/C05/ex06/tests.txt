@@ -1,0 +1,115 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    tests.txt                                          :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/11/10 22:42:03 by jgermany          #+#    #+#              #
+#    Updated: 2022/11/16 18:07:56 by jgermany         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+C05X06 🟢🔴
+
+Evil tests made with 😈😈😈 passion
+
+Context : ft_is_prime(nb) returns 1 if nb is a prime number, 0 if it's not.
+A prime number is a number that has only two divisors: 1 and itself.
+
+i is a divisor of nb if and only if nb % 0 == 0.
+
+Every nb has 1 and itself as divisor. For a prime, those should be the only
+ones.
+
+[🟢] Those integer are certainly primes...
+
+	"2"
+		-> 1
+	"19" 
+		-> 1
+	"47"
+		-> 1
+	"61"
+		-> 1
+	"181"
+		-> 1
+	"619"
+		-> 1
+	"937"
+		-> 1
+	"5791"
+		-> 1	
+	"24083"
+		-> 1
+	"33751"
+		-> 1
+	"161323"
+		-> 1
+	"617761"
+		-> 1
+	"4079477"
+		-> 1
+
+[🟢] ...and those definitely NOT
+
+	"0"
+		-> 0
+	"1"
+		-> 0
+	"15"
+		-> 0
+	"50"
+		-> 0
+	"76"
+		-> 0
+	"294"
+		-> 0
+	"657"
+		-> 0
+	"2232"
+		-> 0
+	"7887"
+		-> 0
+	"61761"
+		-> 0
+	"578437"
+		-> 0
+	"15978437"
+		-> 0
+	
+[🟢] Let's break a sweat (🌶️ hot case)
+	"79798371"
+		-> 0
+	"130279397"
+		-> 0
+	"2138322564"
+		-> 0
+	time (gww ft_is_prime.c main.c && ./a.out "2138322564")
+		-> below 0.1s total
+	"2147395600"
+		-> 0
+	"2147483629"
+		-> 1
+	time (gww ft_is_prime.c main.c && ./a.out "2147483629")
+		-> below 0.1s total
+	"2147483647"
+		-> 1
+	time (gww ft_is_prime.c main.c && ./a.out "2147483647")
+		-> below 0.1s total
+
+[🟢] Who has the luxury of being negative in his prime?
+	"-1"
+		-> 0
+	"-5"
+		-> 0
+	"-255"
+		-> 0
+	"-4242"
+		-> 0
+	"-500305"
+		-> 0
+	"-72577984"
+		-> 0
+	"-2147483648"
+		-> 0
