@@ -6,7 +6,7 @@
 #    By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 22:42:03 by jgermany          #+#    #+#              #
-#    Updated: 2022/11/15 23:01:34 by jgermany         ###   ########.fr        #
+#    Updated: 2022/11/16 15:39:04 by jgermany         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,56 +17,78 @@ Evil tests made with 😈😈😈 passion
 Context : ft_sqrt(nb) returns, if exists, i the integer square root of nb, a
 number such as i * i == nb. 
 
-[🔴] No imagination
-	"-1"
-		-> -1
-	"-5"
-		-> -1
-	"-255"
-		-> -1
-	"-4242"
-		-> -1
-	"-2147483647"
-		-> -1
-
-[🔴] Sqrt 0 ??
-
-[🔴] Those integer sqrt certainly exists...
-
-[🔴] Those definitely NOT (returns 0)
-
-[🔴] EXTREME SPORTS 5 - GOLDEN EXTREMES
-
-########################################################################
-
-[🔴] Let it work just to see how it goes
-	"5"
-		-> 5
+[🟢] Those integer sqrt certainly exists...
+	"0"
+		-> 0
 	"9"
-		-> 34
-	"13"
-		-> 233
+		-> 3
 	"25" 
-		-> 75025
+		-> 5
 	"36"
-		-> 14930352
+		-> 6
+	"62500"
+		-> 250
+	"251001"
+		-> 501
+	"589824"
+		-> 768
+	"1085764"
+		-> 1042
+	"4088484"
+		-> 2022
 
-int    main(void)
-{
-	printf("sqrt(-3)) = %i\n", ft_sqrt(-3));
-	printf("sqrt(0)) = %i\n", ft_sqrt(0));
-	printf("sqrt(25) = %i\n", ft_sqrt(25));
-	printf("sqrt(36) = %i\n", ft_sqrt(36));
-	printf("sqrt(625)) = %i\n", ft_sqrt(625)); // 25
-	printf("sqrt(62500)) = %i\n", ft_sqrt(62500)); // 250
-}
+[🟢] ...and those definitely NOT
+	"13"
+		-> 0
+	"50"
+		-> 0
+	"76"
+		-> 0
+	"294"
+		-> 0
+	"657"
+		-> 0
+	"2232"
+		-> 0
+	"7887"
+		-> 0
+	"61761"
+		-> 0
+	"578437"
+		-> 0
 
-[🔴] HIGH PERFORMANCE
-	"45"
-		-> 1134903170
-	time (gww ft_fibonacci.c main.c && ./a.out "45")
-		-> below 1s (🔴 failed - over 11s)
-	"47"
-		-> 2971215073 (overflow: -1323752223)
-	time (gww ft_fibonacci.c main.c && ./a.out "45")
-		-> below 1s (🔴 failed - over 30s)
+[🟢] Let's break a sweat (🌶️ hot case)
+	"79798489"
+		-> 8933
+	"130279396"
+		-> 11414
+	"2138322564"
+		-> 46242
+	time (gww ft_sqrt.c main.c && ./a.out "2138322564")
+		-> below 0.1s total
+	"2147395599"
+		-> 0
+	"2147395600"
+		-> 46340
+	"2147395601"
+		-> 0
+	"2147483647"
+		-> 0
+	time (gww ft_sqrt.c main.c && ./a.out "2147483647")
+		-> below 0.1s total
+
+[🟢] We have NO imagination
+	"-1"
+		-> 0
+	"-5"
+		-> 0
+	"-255"
+		-> 0
+	"-4242"
+		-> 0
+	"-500305"
+		-> 0
+	"-72577984"
+		-> 0
+	"-2147483648"
+		-> 0
