@@ -6,7 +6,7 @@
 /*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 20:46:34 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/16 21:16:41 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/17 17:47:50 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 			argv[argc - 1]++;
 		}
 		write(1, "\n", 1);
-		argc -= 1;
+		argc--;
 	}
 	return (0);
 }

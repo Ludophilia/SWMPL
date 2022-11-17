@@ -6,7 +6,7 @@
 /*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 22:06:33 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/16 21:55:29 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/17 19:17:49 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,23 @@
 
 int	ft_strcmp(char *s1, char *s2)
 {
-	int	i;
-
-	i = 0;
-	while (s1[i] || s2[i])
+	while (*s1 || *s2)
 	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
+		if (*s1 != *s2)
+			return (*s1 - *s2);
+		s1++;
+		s2++;
 	}
 	return (0);
 }
 
-void	ft_sort_tab(char **tab, int size)
+void	ft_sort_tab(char **argv)
 {
-	int	i;
-	int	j;
-	int	t;
+	char	*t;
 
-	i = 0;
-	while ((i + 1) < size)
+	while (*(argv + 1))
 	{
-		j = 0;
-		while ((j + 1) < (size - i))
+		while (*(*(argv + 1) + 1))
 		{
 			if (ft_strcmp(tab[j], tab[j + 1]) > 0)
 			{
@@ -44,27 +38,27 @@ void	ft_sort_tab(char **tab, int size)
 				tab[j] = tab[j + 1];
 				tab[j + 1] = t;
 			}
-			j++;
+			**// j++;
 		}
-		i++;
+		argv++;
 	}
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, char s**argv)
 {
 	if (argc < 2)
 		return (1);
 	argv += 1;
-	ft_sort_tab(argv, argc - 1); // Zhat s this supposed to do ? I don't remember
+	ft_sort_tab(argv);
 	while (*argv)
 	{
 		while (**argv)
 		{
 			write(1, *argv, 1);
-			*argv += 1;
+			*argv++;
 		}
 		write(1, "\n", 1);
-		argv += 1;
+		argv++;
 	}
 	return (0);
 }
