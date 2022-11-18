@@ -1,0 +1,51 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    tests.txt                                          :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/11/10 22:42:03 by jgermany          #+#    #+#              #
+#    Updated: 2022/11/18 21:06:56 by jgermany         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+C07X00 🟢🔴
+
+Evil tests made with 😈😈😈 passion
+
+Context : Create ft_strdup(*src), a function that clones src in a new memory 
+buffer obtained via malloc and return a pointer to the first char of this 
+buffer.
+
+What kind of tests ?
+	- What happens when str is empty ""
+	- a normal test with a str
+	- Should errno be set ?
+
+[🟢] Let's go for a somewhat rocky stroll...
+	"0123456789"
+		->	Original : '0123456789' in (pointer_address) 
+			Copy : '0123456789' in (different_pointer_address) 
+	"012345678901234567890123456789"
+		->	Original : '012345678901234567890123456789' in (pointer_address) 
+			Copy : '012345678901234567890123456789' in 
+			(different_pointer_address) 
+	"012345678901234567890123456789012345678901234567890123456789"
+		->	Original : '0123456789012345678901234567890123456789
+			01234567890123456789' in (pointer_address) 
+			Copy : '0123456789012345678901234567890123456789
+			01234567890123456789' in (different_pointer_address) 
+	"0123456789012345678901234567890123456789012345678901234567890123456789
+	01234567890123456789012345678901234567890123456789"
+		->	Original : '01234567890123456789012345678901234567890123456789
+			0123456789012345678901234567890123456789
+			012345678901234567890123456789' in (pointer_address) 
+			Copy : '01234567890123456789012345678901234567890123456789
+			0123456789012345678901234567890123456789
+			012345678901234567890123456789' in (different_pointer_address) 
+
+[🟢] Empty string... but why ?
+	""
+		->	Original : '' in (pointer_address) 
+			Copy : '' in (different_pointer_address) 
