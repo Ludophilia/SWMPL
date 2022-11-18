@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgermany <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:49:08 by jgermany          #+#    #+#             */
-/*   Updated: 2022/10/03 16:28:30 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/18 22:15:12 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	*ft_range(int min, int max);
 void	ft_print_range(int *range, int min, int max)
 {
 	int	i;
-	
+
 	i = 0;
 	while (min + i < max)
 	{
@@ -28,7 +28,6 @@ void	ft_print_range(int *range, int min, int max)
 			printf("%i ", range[i]);
 		else
 			printf("%i", range[i]);
-
 		i++;
 	}
 }
