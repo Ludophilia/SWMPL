@@ -1,0 +1,86 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    tests.txt                                          :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/11/10 22:42:03 by jgermany          #+#    #+#              #
+#    Updated: 2022/11/18 14:49:11 by jgermany         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+C06X03 🟢🔴
+
+Evil tests made with 😈😈😈 passion
+
+Context : Create a program that sorts by ascii pos the diffents arguments passed
+to the program and then use write() to display them on stdout, except the 
+program name
+
+[🟢] Chuckling: "Too short, way to short :0" 
+	(no args passed)
+		-> Error
+	""
+		-> ""
+	1
+		-> 1
+	a
+		-> a
+
+[🟢] Alphonse, I don't f*** care about the program name!
+	")" "(" 
+		->  (
+			)
+	")" "(" "\!" "#" 
+		->  !
+			#
+			(
+			)
+	"z" "Z" ")" "a" "A" "(" "\"" "#" "$"
+		->	"
+			#
+			$
+			(
+			)
+			A
+			Z
+			a
+			z
+
+[🟢] Boring soRt with a bit of saLt
+	0 x 9 z 8 4 e 7 z 2 r c 5 b 1 a 0 e 3 y 0 z
+		->	0
+			0
+			0
+			1
+			2
+			3
+			4
+			5
+			7
+			8
+			9
+			a
+			b
+			c
+			e
+			e
+			r
+			x
+			y
+			z
+			z
+			z
+
+[🟢] The devil 😈 is in the details (x16)
+	banane bAnane bAnAne bAnAnE
+		->	bAnAnE
+			bAnAne
+			bAnane
+			banane
+	bAnAnE BaNaNe aNaNaS AnAnAs
+		->	AnAnAs
+			BaNaNe
+			aNaNaS
+			bAnAnE

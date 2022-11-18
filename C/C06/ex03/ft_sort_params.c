@@ -6,7 +6,7 @@
 /*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 22:06:33 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/18 13:13:04 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/18 14:49:36 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,24 @@ int	ft_strcmp(char *s1, char *s2)
 void	ft_sort_tab(char **argv)
 {
 	char	*t;
-	char	**cargv;
+	char	**ori;
+	char	**cur;
+	int		dff;
 
+	ori = argv;
 	while (*(argv + 1))
 	{
-		cargv = argv;
-		while (*(cargv + 1))
+		cur = ori;
+		dff = argv - cur;
+		while (*(cur + 1 + dff))
 		{
-			if (ft_strcmp(*cargv, *(cargv + 1)) > 0)
+			if (ft_strcmp(*cur, *(cur + 1)) > 0)
 			{
-				t = *cargv;
-				*cargv = *(cargv + 1);
-				*(cargv + 1) = t;
+				t = *cur;
+				*cur = *(cur + 1);
+				*(cur + 1) = t;
 			}
-			cargv++;
+			cur++;
 		}
 		argv++;
 	}
@@ -50,7 +54,7 @@ int	main(int argc, char **argv)
 {
 	if (argc < 2)
 		return (1);
-	ft_sort_tab(argv);
+	ft_sort_tab(argv + 1);
 	while (*++argv)
 	{
 		while (**argv)
