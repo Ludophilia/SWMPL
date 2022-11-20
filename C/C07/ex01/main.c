@@ -6,7 +6,7 @@
 /*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:49:08 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/18 22:15:12 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/20 21:03:38 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,29 @@ void	ft_print_range(int *range, int min, int max)
 	while (min + i < max)
 	{
 		if (i == 0)
-			printf("R : ");
+			printf("R: '");
 		if (min + i < max - 1)
 			printf("%i ", range[i]);
 		else
-			printf("%i", range[i]);
+			printf("%i'", range[i]);
 		i++;
 	}
+	printf("\n");
 }
 
 int	main(int argc, char **argv)
 {
+	int	*range;
+
 	if (argc != 3)
-		return (0);
+		return (1);
+	range = ft_range(atoi(argv[1]), atoi(argv[2]));
+	if (!range)
+	{
+		printf("Wrong range mf.\n");
+		return (1);
+	}
 	printf("min : %i, max : %i\n", atoi(argv[1]), atoi(argv[2]));
-	ft_print_range(
-		ft_range(atoi(argv[1]), atoi(argv[2])),
-		atoi(argv[1]), atoi(argv[2]));
-	return (1);
+	ft_print_range(range, atoi(argv[1]), atoi(argv[2]));
+	return (0);
 }
