@@ -6,7 +6,7 @@
 /*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:49:08 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/20 21:03:38 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/21 15:03:16 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int argc, char **argv)
 	range = ft_range(atoi(argv[1]), atoi(argv[2]));
 	if (!range)
 	{
-		printf("Wrong range mf.\n");
+		printf("Range is null. Terminating...\n");
 		return (1);
 	}
 	printf("min : %i, max : %i\n", atoi(argv[1]), atoi(argv[2]));

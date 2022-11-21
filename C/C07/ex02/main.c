@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgermany <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:49:08 by jgermany          #+#    #+#             */
-/*   Updated: 2022/10/03 18:35:18 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/21 16:29:24 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ void	ft_print_range(int **range, int min, int max)
 	while (min + i < max)
 	{
 		if (i == 0)
-			printf("R : ");
+			printf("R : '");
 		if (min + i < max - 1)
 			printf("%i ", range[0][i]);
 		else
-			printf("%i", range[0][i]);
-
+			printf("%i'", range[0][i]);
 		i++;
 	}
+	printf("\n");
 }
 
 int	main(int argc, char **argv)
@@ -38,13 +38,25 @@ int	main(int argc, char **argv)
 	int	min;
 	int	max;
 	int	**range;
+	int	subrange_size;
 
-	range = (int **)malloc(1 * sizeof(int *));
-	if (!range || (argc != 3))
+	if ((argc != 3))
 		return (1);
 	min = atoi(argv[1]);
 	max = atoi(argv[2]);
-	printf("ft_ultimate_range -> %i\n", ft_ultimate_range(range, min, max));
+	range = (int **)malloc(1 * sizeof(int *));
+	if (!range)
+	{
+		printf("Range is null. Terminating...\n");
+		return (1);
+	}
+	subrange_size = ft_ultimate_range(range, min, max);
+	if (subrange_size == -1)
+	{
+		printf("Subrange is null. Terminating...\n");
+		return (1);
+	}
+	printf("subrange size: %i\n", subrange_size);
 	ft_print_range(range, min, max);
-	return (1);
+	return (0);
 }
