@@ -5,25 +5,28 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/21 19:27:58 by jgermany          #+#    #+#              #
-#    Updated: 2022/11/21 19:28:00 by jgermany         ###   ########.fr        #
+#    Created: 2022/11/21 19:27:43 by jgermany          #+#    #+#              #
+#    Updated: 2022/11/21 19:27:46 by jgermany         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-EXEC = a.out
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
+EXEC = a.out
+CFILE = ft_strjoin
+MAIN = main
+
 all: $(EXEC)
-$(EXEC): ft_ultimate_range.o main.o
-	$(CC) $(CFLAGS) ft_ultimate_range.o main.o
-ft_ultimate_range.o: ft_ultimate_range.c
+$(EXEC): $(CFILE).o $(MAIN).o
+	$(CC) $(CFLAGS) $(CFILE).o $(MAIN).o
+$(CFILE).o: $(CFILE).c
 	$(CC) $(CFLAGS) -c $^
-main.o: main.c
+$(MAIN).o: $(MAIN).c
 	$(CC) $(CFLAGS) -c $^
 
 re: fclean all
 fclean: clean
-	rm a.out
+	rm $(EXEC)
 clean:
-	rm ft_ultimate_range.o main.o
+	rm $(CFILE).o $(MAIN).o

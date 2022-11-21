@@ -6,7 +6,7 @@
 /*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:49:08 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/21 16:29:24 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/21 19:18:13 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_ultimate_range(int **range, int min, int max);
 void	ft_print_range(int **range, int min, int max)
 {
 	int	i;
-	
+
 	i = 0;
 	while (min + i < max)
 	{
