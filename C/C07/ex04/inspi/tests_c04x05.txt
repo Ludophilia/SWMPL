@@ -1,0 +1,179 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    tests.txt                                          :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/11/10 22:42:03 by jgermany          #+#    #+#              #
+#    Updated: 2022/11/15 17:27:42 by jgermany         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+C04X05 🟢🔴
+
+Evil tests made with 😈😈😈 passion
+
+Goal : ft_atoi_base is a function that converts a number in a given base (given 
+by the arg char *base) to an int in base 10.
+
+This test is pretty much a mirror of those with from C04X04 with a the cases
+specific to ft_atoi from C04X03
+
+[🟢] OK, that's... kind of straightforward ? At least there is a lot of positive
+things to it :))
+	"0000000000011111111" "01"
+		-> "255"
+	"++?X?X?X;?" ";?X"
+		-> "4096" 
+	"+000" "0dkD1"
+		-> "0"
+	"d0" "0dkD1"
+		-> "5"
+	"eff" "poneyvif"
+		-> "255" 
+	"++yipiiiev" "poneyvif"
+		-> "9989533" 
+	"+++++000255" "0123456789"
+		-> "255"
+	"+74610505" "0123456789"
+		-> "74610505"
+	"+++fa" "abcdefghijkl"
+		-> "60"
+	"+++aaaaaaaaaaaaaaaafa" "abcdefghijkl"
+		-> "60"
+	"++++++++++++++++dbpQQeZ" "0idp6ebHz&QZ"
+		-> "7545959"
+	"+++++0FF" "0123456789ABCDEF"
+		-> "255"
+
+[🟢] Oh! please! Could you be a bit less negative ? (Or less ambiguous 
+at least ?)
+	"-101010" "01"
+		-> "-42"
+	"--+-00000000" "10"
+		-> "-255" 
+	"-+-ZYXYXXY" "XYZ"
+		-> "1729" 
+	"-+-+-+--dk" "0dkD1"
+		-> "-7"
+	"-+--fevyfi" "vifponey"
+		-> "-90577" 
+	"------04242" "0123456789"
+		-> "4242"
+	"+++---dbpQQeQ" "0idp6ebHz&QZ"
+		-> "-7545958"
+	"---2A" "0123456789ABCDEF"
+		-> "-42"
+
+[🟢] I-I still think only one won't be enough sir.
+	"10" "01"
+		-> "2" 
+	"-10" "01234"
+		-> "-5" 
+	"10" "01234567"
+		-> "8" 
+	"-10" "0123456789"
+		-> "-10"
+	"10" "0123456789AB"
+		-> "12"
+	"-10" "0123456789ABCDEF"
+		-> "-16" 
+
+[🟢] EXTREME SPORTS 3 - EXTREME IS UNBREAKABLE
+	"1111111111111111111111111111111" "01"
+		-> "2147483647" 
+	"-553032005532" "012345"
+		-> "-2147483648" 
+	"A02220281" "0123456789A"
+		-> "2147483647" 
+	"-53G7F549" "0123456789ABCDEFG"
+		-> "-2147483648"
+
+[🟢] Mach, yelling: "INCORRECT BASE YOU MORON!"
+	"657" ""
+		-> "0"
+	"erf" ""
+		-> "0"
+	"-d" "d"
+		-> "0"
+	"-9" "9"
+		-> "0"
+	"0000" "000"
+		-> "0"
+	"KKKKKKKKKKK" "KKK"
+		-> "0"
+	"- 2 2 202" "0 2"
+		-> "0"
+	"-1+0" "+01"
+		-> "0"
+	"-efG+0" "0daef1Ghb+"
+		-> "0"
+	"99957-" "-579"
+		-> "0"
+	"579-zf" "579ABCDEfz123-"
+		-> "0"
+
+[🟢] Wait, you're (not) supposed to start like this !
+	"              ++--1111111111111111111111111111111" "01"
+		-> "2147483647"
+	"				+--A02220281" "0123456789A"
+		-> "2147483647"
+	"++--+--53G7F548" "0123456789ABCDEFG"
+		-> "2147483647"
+	"7FFFFFFF" "0123456789ABCDEF"
+		-> "2147483647"
+	
+	"a1111" "01"
+		-> "0"
+	"dumb++--+--53G7F548" "0123456789ABCDEFG"
+		-> "0"
+	"\ngl+--780" "0123456789"
+		-> "0"
+
+[🟢] What follows a SPACE is ONLY... a space OR a sign ?
+	"		      ++++--+--++7FFFFFFF" "0123456789ABCDEF"
+		-> "2147483647"
+	" 		\++++--+2147483647" "0123456789"
+		-> "0"
+	"			desudesu++++--+53G7F548" "0123456789ABCDEFG"
+		-> "0"
+
+[🟢] Wait...  What follows a SPACE is ONLY a sign OR a space ? 
+NO NUMBERS? (HOT CASE 🌶️)
+	"		      2147++++--+--++2147483647" "0123456789"
+		-> "2147"
+
+[🟢] What follows a SIGN is ONLY... a sign OR a number ?
+	" ----+--+AAA" "0123456789A"
+		-> "1330"
+	" ----+--+		   AAA" "0123456789A"
+		-> "0"
+	" ----+--+nandesonobungakokoniarimasukaAAA" "0123456789A"
+		-> "0"
+	" ----+--+\xaAAA" "0123456789A"
+		-> "0"
+
+[🟢] Q: What happens when a number is made with no element of the base ?
+A: Then there is NO NUMBER et result is 0.
+	"     ---+--+1234" "ABC"
+		-> "0"
+	"     ---+--+1234C" "ABC"
+		-> "0"
+	"     ---+--+C1234" "ABC"
+		-> "-2"
+
+[🟢] Jack, any breach in our little agreement and *clap* DONE!! (just first 
+series of numbers)
+	"     ---+--+1234ab567" "0123456789"
+		-> "-1234"
+	"     ---+--+1234,56" "0123456789"
+		-> "-1234"
+	"     ---+--+1234.56" "0123456789"
+		-> "-1234"
+	"     ---+--+1234+10" "0123456789"
+		-> "-1234"
+	"     ---+--+1234\x2b10" "0123456789"
+		-> "-1234"
+	"41     ---+--+1234ab" "0123456789"
+		-> "41"
