@@ -6,7 +6,7 @@
 /*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 18:46:42 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/21 21:38:46 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/22 16:02:43 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ int	ft_strslen(int size, char **strs, char *sep)
 
 	i = 0;
 	t = 0;
-	while (i < size)
+	while ((i < size) && strs[i])
 	{
 		t += ft_strlen(strs[i]);
-		if (i < (size - 1))
+		if ((i < (size - 1)) && strs[i + 1])
 			t += ft_strlen(sep);
 		i++;
 	}
@@ -63,13 +63,15 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	char	*str;
 	int		i;
 
+	if (size < 0)
+		size = 0;
 	strslen = ft_strslen(size, strs, sep);
 	str = (char *)malloc((strslen + 1) * sizeof(char));
 	i = 0;
-	while (i < size)
+	while ((i < size) && strs[i])
 	{
 		ft_strcat(str, strs[i]);
-		if (i < (size - 1))
+		if ((i < (size - 1)) && strs[i + 1])
 			ft_strcat(str, sep);
 		i++;
 	}

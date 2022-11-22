@@ -6,7 +6,7 @@
 #    By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 22:42:03 by jgermany          #+#    #+#              #
-#    Updated: 2022/11/22 14:00:35 by jgermany         ###   ########.fr        #
+#    Updated: 2022/11/22 16:05:22 by jgermany         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,8 @@ What kind of tests should we do here?
 		-> "hello world"
 	- "2" "toi" "moi" " + "
 		-> "toi + moi"
+	- "3" "visit: www" "42" "fr" "."
+		-> "visit: www.42.fr"
 	- "4" "" "mnt" "nfs" "homes" "/" 
 		-> "/mnt/nfs/homes"
 
@@ -37,7 +39,7 @@ What kind of tests should we do here?
 	- "2" "" "" "	"
 		-> "	"
 		
-[🟢] Only one string - Why using join then?
+[🟢] There is ONLY one string - Why using join then?
 	- "1" "" ""
 		-> ""
 	- "1" "Je..." ""
@@ -48,9 +50,9 @@ What kind of tests should we do here?
 [🟢] "Wow, wow, wow... Joining a lot there."
 	- "8" "yoursite.com" "api" "json" "v5" "get" "ressource" "id" "110" "/" 
 		-> "yoursite.com/api/json/v5/get/ressource/id/110"
-	- "3" "visit: www" "42" "fr" "."
-		-> "visit: www.42.fr"
-
+	- "16" 0 1 2 3 4 5 6 7 8 9 A B C D E F "-"
+		-> "0-1-2-3-4-5-6-7-8-9-A-B-C-D-E-F"
+	
 [🟢] Empty or no separator
 	- "3" "salut" "la" "mif" ""
 		-> "salutlamif"
@@ -58,7 +60,9 @@ What kind of tests should we do here?
 		-> ""
 	- "4" "" "A" "" "B" ""
 		-> "AB"
-
+	- "8" "" "X" "" "Y" "" "" "" "Z" ""
+		-> "XYZ"
+	
 [🟢] Too much separator
 	- "2" "You" "Me" "		<------>		"
 		-> 'You               <------>                Me'
@@ -78,16 +82,23 @@ What kind of tests should we do here?
 		-> ""
 	- "1" "hello" "world" " "
 		-> "hello"
+	- "1" "C'EST" " OUF \!\!" "..."
+		-> "C'EST"
 	- "-4" "Ich" "bin" "ein" "berliner" " "
 		-> ""
-		-> ℹ️ guard in main level blocks that kind of cases but "" is correct
-		-> at source level, parce 0 < -3, on retombe sur l'exception 
-		size == 0. Au niv du main, strs = nil, de fait le main aussi renvoie
-		une erreur.
+		-> guard in main level blocks that kind of cases but "" is correct
+		-> at source level, 0 < -3, so exception size == 0 is triggered. 
+		At main level, strs = nil, so main prints this state.
 
-[🔴] Wrong size but NOT enough strs (🌶️ hot case)
+[🟢] Wrong size but NOT enough strs (🌶️ hot case)
 	- "5" "salut" "la" "mif" ""
-		-> 😨
-	- "10" "" ""
-		-> 😨 
- 
+		-> "salutlamif"
+		-> Guards have been added to avoid relying only on size. Should have let
+		the function do it's thing and return a segfault.
+	- "10" "" "OUF"
+		-> ""
+		-> Only one str. What do you want to concatenate?
+	- "20" "" "///"
+		-> "" 
+ 	- "42" "welcome" "cadet" "_"
+		-> "welcome_cadet"

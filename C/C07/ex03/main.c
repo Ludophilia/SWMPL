@@ -6,7 +6,7 @@
 /*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:49:08 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/22 13:55:03 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/22 16:04:41 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	i = 0;
-	while (i < size)
+	while ((i < size) && argv[2 + i + 1])
 	{
 		strs[i] = argv[2 + i];
 		i++;
 	}
-	printf("ft_strjoin : '%s'\n", ft_strjoin(size, strs, argv[2 + size]));
+	printf("ft_strjoin : '%s'\n", ft_strjoin(size, strs, argv[2 + i]));
 	return (0);
 }
