@@ -6,7 +6,7 @@
 #    By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 19:27:43 by jgermany          #+#    #+#              #
-#    Updated: 2022/11/22 22:06:06 by jgermany         ###   ########.fr        #
+#    Updated: 2022/11/23 16:46:09 by jgermany         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SOURCES = $(wildcard *.c) # Those always exists
 
 # OBJECTS = $(wildcard *.o) #They may not exist when make is executed (empty)
 OBJECTS = $(SOURCES:.c=.o) #But their NAME can be built from anther one
+# OBJECTS = $($(wildcard *.c):.c=.o) #Doesn't work.
 # OBJECTS = ft_convert_base2.o ft_convert_base.o main.o #Their names, literally
 
 all: $(EXEC)

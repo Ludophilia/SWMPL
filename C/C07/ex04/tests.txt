@@ -6,7 +6,7 @@
 #    By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 22:42:03 by jgermany          #+#    #+#              #
-#    Updated: 2022/11/22 19:55:53 by jgermany         ###   ########.fr        #
+#    Updated: 2022/11/23 16:44:55 by jgermany         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,37 +17,124 @@ Evil tests made with 😈😈😈 passion
 Context : Create ft_strjoin(char *nbr, char *base_from, char *base_to), a
 function that converts a number in a base base_from to a base base_to.
 
-nbr follows the same rules as atoi base. 
-
+nbr follows the same rules as atoi base.
 
 What kind of tests should we do here?
 	-> See below
 
-	Base case (positive and negatives, both directions)
-		"9" "0123456789" "01"
-			-> '1001'
-		"1001" "01" "0123456789"
-			-> '9'
-		"d0" "0dkD1" "jUs5i3u"
-			-> '3' 
+	[🟢] Base case (positive and negatives, Bidirectional)
+		"-9" "0123456789" "01"
+			-> '-1001'
+			-> Base 10 to 2 conversion
+		"-1001" "01" "0123456789"
+			-> '-9'
 			
-	Extreme cases (int_min, int_max, underflow, overflows)
-		"" "" ""
-			->
+		"+D0D" "0dkD1" "jUs5i3u"
+			-> 'UiU'
+			-> Base 5 to 7 conversion
+		"+UiU" "jUs5i3u" "0dkD1"
+			-> 'D0D'
+			
+		"-yipiiiev" "poneyvif" "W41fuDr3am\!"
+			-> '-D3Wff4u'
+			-> Base 8 to 11 conversion. ! is escaped.
+		"-D3Wff4u" "W41fuDr3am\!" "poneyvif"
+			-> '-yipiiiev'
+			
+		"00izzH&Z" "0iDp6ebHz&QZ" "h0T"
+			-> 'T0hT000h0ThT'
+			-> Base 12 to 3 conversion.
+		"T0hT000h0ThT" "h0T" "0iDp6ebHz&QZ"
+			-> '00izzH&Z'
 
-	Too much polarity (excess of +++ or --- | Does multiple - change sign ?)
-		"" "" ""
+		"-CA0F" "0123456789ABCDEF" "0123456789ABCDEFGHIJKLMN"
+			-> '-3HJ7'
+			-> Base 16 to 24 conversion.
+		"-3HJ7" "0123456789ABCDEFGHIJKLMN" "0123456789ABCDEF"
+			-> '-CA0F'
+	
+	[🟢] Extreme cases (int_min, int_max)
+		"-H0000000" "0AiDp6ebHz&QZ2f8" "0123456789ABCDEF"
+			-> '-80000000'
+			-> Base 16 to 16 conversion.
+		"-H0000000" "0AiDp6ebHz&QZ2f8" "0123456789"
+			-> '-2147483648'
+			-> Base 16 to 10 conversion.
+		"00001111111111111111111111111111111" "01" "aLpH4mAl3"
+			-> 'm4l3llHAlL'
+			-> Base 2 to 9 conversion.
+		"m4l3llHAlL" "aLpH4mAl3" "0123456789"
+			-> '2147483647'
+			-> Base 9 to 10 conversion.
 
-	Ambivalence (mix of + or - | Does multiple - change sign ?)
-		"" "" ""
+	[🟢] Extreme cases (underflow, overflow)
+		"-2147483649" "0123456789" "0123456789"
+			-> '2147483647'
+		"-H000000A" "0AiDp6ebHz&QZ2f8" "0123456789"
+			-> '2147483647'
+			-> Base 16 to 10 conversion.
+		"2147483648" "0123456789" "0123456789"
+			-> '-2147483648'
+		"VV303d00VV3d" "0td3%V" "0123456789"
+			-> '-2147483648'
+			-> Base 6 to 10 converison.
 
-	Adding a new glyph: what happens when a number can't be written with only 
-	character.
-		"" "" ""
+	[🟢] Too much polarity (excess of +++ or --- | Does multiple - change sign ?)
+		"---9" "0123456789" "01"
+			-> '-1001'
+		"++++++++++D0D" "0dkD1" "jUs5i3u"
+			-> 'UiU'
+		"--+++++-yipiiiev" "poneyvif" "W41fuDr3am\!"
+			-> '-D3Wff4u'
+		"--+--00izzH&Z" "0iDp6ebHz&QZ" "h0T"
+			-> 'T0hT000h0ThT'
+		"-+++++--CA0F" "0123456789ABCDEF" "0123456789ABCDEFGHIJKLMN"
+			-> '-3HJ7'
+		"+++++-++++-m4l3llHAlL" "aLpH4mAl3" "0123456789"
+			-> '2147483647'
 
-	Wrong bases
-		"" "" ""
-
+	[🟢] Wrong bases
+		"657" "" "poneyvif"
+			-> (null)
+		"" "" "b0caL"
+			-> (null)
+		"-d" "d" "jUs5i3u"
+			-> (null)
+		"-9" "0123456789" "9" 
+			-> (null)
+		"1450" "012345" "poneyvifetsympa"
+			-> (null)
+		"KKKKKKKKKKK" "KKK" "FN"
+			-> (null)
+		"- 2 2 202" "0 2" "RN"
+			-> (null)
+		"-1+0" "+01" "bCBG"
+			-> (null)
+		"GGGi-" "-i7G" "s0uleiL"
+			-> (null)
+		"-efG+0" "0daef1Ghb+" "POWER"
+			-> (null)
+			
+	[🟢] No base change and nothing should change (from baseN to baseN)
+		"--3ff" "pon3yvif" "pon3yvif"
+			-> '3ff'
+		"++--?X?X?X;?" ";?X" ";?X"
+			-> '?X?X?X;?'
+		"++++++++++++++++dbpQQeZ" "0idp6ebHz&QZ" "0idp6ebHz&QZ"
+			-> 'dbpQQeZ'
+		"2147483647" "0123456789" "0123456789"
+			-> '2147483647'
+		"0000000000011111111" "01" "10"
+			-> '00000000'
+		"-yipiiiev" "poneyvif" "01234567"
+			-> '-46066635'
+		"-CA0F" "0123456789ABCDEF" "0123456789WAifeY"
+			-> "-iW0Y"
+	
+	Where is the number ? (No number parsed)
+		"egg" "pon3yvif" "0123456789"
+			-> '0'
+			
 	No nbr should start like this (only number, sign, or white)
 		"" "" ""
 
@@ -59,6 +146,13 @@ What kind of tests should we do here?
 
 	Any illegal character should break number parsing
 		"" "" ""
+
+
+
+
+
+
+
 
 	printf("RES: %s\n", ft_convert_base(" ---2147483650XOXOXOX_kawaiisugi:)", 
 		"0123456789", "0123456789"));
@@ -78,90 +172,3 @@ What kind of tests should we do here?
 		"0123456789", "poneyvif"));
 	printf("RES: %s\n", ft_convert_base(" -- vn  OH MY GOD^^", 
 		"poneyvif", "0123456789"));
-
-
-
-
-
-
-[🟢] Basic examples
-	- "2" "hello" "world" " "
-		-> "hello world"
-	- "2" "toi" "moi" " + "
-		-> "toi + moi"
-	- "3" "visit: www" "42" "fr" "."
-		-> "visit: www.42.fr"
-	- "4" "" "mnt" "nfs" "homes" "/" 
-		-> "/mnt/nfs/homes"
-
-[🟢] Empty strings
-	- "2" "" "" "\-#?"
-		-> "\-#?"
-	- "5" "" "" "" "" "" "\-#?"
-		-> "\-#?\-#?\-#?\-#?"
-	- "2" "" "" "	"
-		-> "	"
-		
-[🟢] There is ONLY one string - Why using join then?
-	- "1" "" ""
-		-> ""
-	- "1" "Je..." ""
-		-> "Je..."
-	- "1" "EXPLOSION" "\!"
-		-> "EXPLOSION"
-
-[🟢] "Wow, wow, wow... Joining a lot there."
-	- "8" "yoursite.com" "api" "json" "v5" "get" "ressource" "id" "110" "/" 
-		-> "yoursite.com/api/json/v5/get/ressource/id/110"
-	- "16" 0 1 2 3 4 5 6 7 8 9 A B C D E F "-"
-		-> "0-1-2-3-4-5-6-7-8-9-A-B-C-D-E-F"
-	
-[🟢] Empty or no separator
-	- "3" "salut" "la" "mif" ""
-		-> "salutlamif"
-	- "2" "" "" ""
-		-> ""
-	- "4" "" "A" "" "B" ""
-		-> "AB"
-	- "8" "" "X" "" "Y" "" "" "" "Z" ""
-		-> "XYZ"
-	
-[🟢] Too much separator
-	- "2" "You" "Me" "		<------>		"
-		-> 'You               <------>                Me'
-	- "2" "FRA" "ALL" "		XXXXXXXXXXXXXXXXXXXXXXXXXXXX		"
-		-> 'FRA               XXXXXXXXXXXXXXXXXXXXXXXXXXXX            ALL'
-		
-[🟢] No size
-	- "0" "hello" "world" " "
-		-> ""
-	- "0" "" "" "\-#?"
-		-> ""
-	- "0" "EXPLOSION" "\!"
-		-> ""
-
-[🟢] Wrong size but enough strs (🌶️ hot case)
-	- "1" "" "" "	"
-		-> ""
-	- "1" "hello" "world" " "
-		-> "hello"
-	- "1" "C'EST" " OUF \!\!" "..."
-		-> "C'EST"
-	- "-4" "Ich" "bin" "ein" "berliner" " "
-		-> ""
-		-> guard in main level blocks that kind of cases but "" is correct
-		-> at source level, 0 < -3, so exception size == 0 is triggered. 
-		At main level, strs = nil, so main prints this state.
-
-[🟢] Wrong size but NOT enough strs (🌶️ hot case)
-	- "5" "salut" "la" "mif" ""
-		-> "salutlamif"
-		-> Guards have been added to avoid relying only on size. Should have let
-		the function do it's thing and return a segfault.
-	- "10" "" "OUF"
-		-> ""
-		-> Only one str. What do you want to concatenate?
-	- "20" "" "///"
-		-> "" 
- 	- "42" "welcome" "cadet" "_"
-		-> "welcome_cadet"

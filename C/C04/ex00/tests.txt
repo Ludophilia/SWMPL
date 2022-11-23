@@ -6,13 +6,13 @@
 #    By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 22:42:03 by jgermany          #+#    #+#              #
-#    Updated: 2022/11/10 22:50:34 by jgermany         ###   ########.fr        #
+#    Updated: 2022/11/23 13:54:50 by jgermany         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-C04 EX00 EVIL TESTS
+C04X00
 
-😈🤩 Made by a psychopath with passion 🤩😈
+Evil tests made with 😈😈😈 passion
 
 Happy path :)
 	"Hello"

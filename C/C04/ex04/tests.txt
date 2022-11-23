@@ -6,13 +6,13 @@
 #    By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 22:42:03 by jgermany          #+#    #+#              #
-#    Updated: 2022/11/22 19:34:30 by jgermany         ###   ########.fr        #
+#    Updated: 2022/11/23 13:54:06 by jgermany         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 C04X04
 
-😈🤩 Made by a psycho with passion 🤩😈
+Evil tests made with 😈😈😈 passion
 
 Goal : ft_putnbr_base is a function that converts an int (base 10) to a number
 in the given base ().
