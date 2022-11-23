@@ -6,19 +6,11 @@
 /*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 15:47:08 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/23 15:46:10 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/24 00:19:33 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-
-int	ft_atoi_base(char *str, char *base);
-
-int	len_nb(int nbr_b10, char *base_to);
-
-char	*ft_wrtchar(char c, char *dest);
-
-char	*ft_wrtnbr_base(int nbr, char *base, char *dest);
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to);
 

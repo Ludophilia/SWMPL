@@ -6,7 +6,7 @@
 #    By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 22:42:03 by jgermany          #+#    #+#              #
-#    Updated: 2022/11/23 20:35:01 by jgermany         ###   ########.fr        #
+#    Updated: 2022/11/24 00:18:47 by jgermany         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ What kind of tests should we do here?
 			-> 'T0hT000h0ThT'
 			-> Base 12 to 3 conversion.
 		"T0hT000h0ThT" "h0T" "0iDp6ebHz&QZ"
-			-> '00izzH&Z'
+			-> 'izzH&Z'
 
 		"-CA0F" "0123456789ABCDEF" "0123456789ABCDEFGHIJKLMN"
 			-> '-3HJ7'

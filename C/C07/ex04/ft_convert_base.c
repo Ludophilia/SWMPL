@@ -6,7 +6,7 @@
 /*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 23:11:37 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/14 19:34:12 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/24 00:24:01 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,38 @@ int	check_base(char *base);
 
 int	is_illeg_at(int i, char *str, char *base);
 
-int	ft_atoi_base(char *str, char *base)
-{	
+int	len_nb(int nbr_b10, char *base_to)
+{	// This can be improved too right?
+	int	i;
+	int	radix;
+
+	radix = check_base(base_to);
+	if (!radix)
+		return (0);
+	i = 0;
+	if (nbr_b10 < 0)
+		i++;
+	while (nbr_b10)
+	{
+		nbr_b10 /= radix;
+		i++;
+	}
+	return (i);
+}
+
+int	ft_atoi_base(char *str, char *base) 
+{	/* Tomorrow 24/11. Use atoi_base from C04 which is more compact. 
+	// Add pointers maybe ? */
 	int	i;
 	int	res;
 	int	sgn;
-	int	rdx;
+	int	radix;
 
 	i = 0;
 	res = 0;
 	sgn = 1;
-	rdx = check_base(base);
-	if (!rdx)
+	radix = check_base(base);
+	if (!radix)
 		return (0);
 	while (str[i])
 	{
@@ -42,7 +62,7 @@ int	ft_atoi_base(char *str, char *base)
 		if (str[i] == '-')
 			sgn *= -1;
 		else if (find_id(str[i], base) >= 0)
-			res = (rdx * res) + find_id(str[i], base);
+			res = (radix * res) + find_id(str[i], base);
 		if (!(find_id(str[i + 1], base) >= 0)
 			&& find_id(str[i], base) >= 0)
 			return (sgn * res);
@@ -51,64 +71,38 @@ int	ft_atoi_base(char *str, char *base)
 	return (0);
 }
 
-int	len_nb(int nbr_b10, char *base_to)
+char	*ft_itoa_base(int nbr_in, char *base, char *nbr_out)
 {
-	int	i;
-	int	rdx;
+	int		radix;
 
-	rdx = check_base(base_to);
-	if (!rdx)
-		return (0);
-	i = 0;
-	if (nbr_b10 < 0)
-		i++;
-	while (nbr_b10)
-	{
-		nbr_b10 /= rdx;
-		i++;
-	}
-	return (i);
-}
-
-char	*ft_wrtchar(char c, char *dest)
-{
-	*dest = c;
-	dest++;
-	return (dest);
-}
-
-char	*ft_wrtnbr_base(int nbr, char *base, char *dest)
-{
-	int		rdx;
-
-	rdx = check_base(base);
-	if (!rdx)
+	radix = check_base(base);
+	if (!radix)
 		return ((char *)0);
-	if (nbr >= rdx || nbr <= -rdx)
-		dest = ft_wrtnbr_base(nbr / rdx, base, dest);
-	if (nbr < 0 && nbr > -rdx)
-		dest = ft_wrtchar('-', dest);
-	if (nbr < 0)
-		dest = ft_wrtchar(base[-(nbr % rdx)], dest);
+	if ((nbr_in >= radix) || (nbr_in <= -radix))
+		nbr_out = ft_itoa_base((nbr_in / radix), base, nbr_out);
+	if ((nbr_in < 0) && (nbr_in > -radix))
+		*nbr_out++ = '-';
+	if (nbr_in < 0)
+		*nbr_out++ = base[-(nbr_in % radix)];
 	else
-		dest = ft_wrtchar(base[nbr % rdx], dest);
-	return (dest);
+		*nbr_out++ = base[(nbr_in % radix)];
+	return (nbr_out);
 }
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	int		nbr_b10;
-	char	*nbr_bto;
-	char	*entry;
+	int		nbr_in;
+	char	*nbr_out;
+	char	*pos_out;
 
 	if (!check_base(base_from) || !check_base(base_to))
 		return ((char *)0);
-	nbr_b10 = ft_atoi_base(nbr, base_from);
-	nbr_bto = (char *)malloc((len_nb(nbr_b10, base_to) + 1) * sizeof(char));
-	if (!nbr_bto)
+	nbr_in = ft_atoi_base(nbr, base_from);
+	nbr_out = (char *)malloc((len_nb(nbr_in, base_to) + 1) * sizeof(char));
+	if (!nbr_out)
 		return ((char *)0);
-	entry = nbr_bto;
-	nbr_bto = ft_wrtnbr_base(nbr_b10, base_to, nbr_bto);
-	*nbr_bto = '\0';
-	return (entry);
+	pos_out = nbr_out;
+	pos_out = ft_itoa_base(nbr_in, base_to, pos_out);
+	*pos_out = '\0';
+	return (nbr_out);
 }
