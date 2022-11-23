@@ -6,7 +6,7 @@
 #    By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 19:27:43 by jgermany          #+#    #+#              #
-#    Updated: 2022/11/23 16:46:09 by jgermany         ###   ########.fr        #
+#    Updated: 2022/11/23 20:36:21 by jgermany         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,8 @@ $(EXEC): $(OBJECTS)
 
 re: fclean all
 fclean: clean
+	rm $(EXEC)
+xclean:
 	rm $(EXEC)
 clean:
 	rm $(OBJECTS)
