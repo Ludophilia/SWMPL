@@ -6,7 +6,7 @@
 #    By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 22:42:03 by jgermany          #+#    #+#              #
-#    Updated: 2022/11/24 13:46:44 by jgermany         ###   ########.fr        #
+#    Updated: 2022/11/24 21:43:44 by jgermany         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,208 +14,209 @@ C07X04 🟢🔴
 
 Evil tests made with 😈😈😈 passion
 
-Context : Create ft_strjoin(char *nbr, char *base_from, char *base_to), a
-function that converts a number in a base base_from to a base base_to.
-
-nbr follows the same rules as atoi base.
+Context : Create ft_convert_base(char *nbr, char *base_from, char *base_to), a
+function that converts a number nbr given as a string in a given base base_from,
+to a number (also given as a str in base base_to). 
 
 What kind of tests should we do here?
 	-> See below
 
-	[🟢] Base case (positive and negatives, Bidirectional)
-		"0" "0123" "m1a"
-			-> 'm'
-			-> Base 4 to 3 conversion
-		"m" "m1a" "0123" 
-			-> '0'
-			
-		"v" "vifd'0r?" "0123456789"
-			-> '0'
-			-> Base 8 to 10 conversion
-		"0" "0123456789" "vifd'0r?" 
-			-> 'v'
-
-		"-9" "0123456789" "01"
-			-> '-1001'
-			-> Base 10 to 2 conversion
-		"-1001" "01" "0123456789"
-			-> '-9'
-			
-		"+D0D" "0dkD1" "jUs5i3u"
-			-> 'UiU'
-			-> Base 5 to 7 conversion
-		"+UiU" "jUs5i3u" "0dkD1"
-			-> 'D0D'
-			
-		"-yipiiiev" "poneyvif" "W41fuDr3am\!"
-			-> '-D3Wff4u'
-			-> Base 8 to 11 conversion. ! is escaped.
-		"-D3Wff4u" "W41fuDr3am\!" "poneyvif"
-			-> '-yipiiiev'
-			
-		"00izzH&Z" "0iDp6ebHz&QZ" "h0T"
-			-> 'T0hT000h0ThT'
-			-> Base 12 to 3 conversion.
-		"T0hT000h0ThT" "h0T" "0iDp6ebHz&QZ"
-			-> 'izzH&Z'
-
-		"-CA0F" "0123456789ABCDEF" "0123456789ABCDEFGHIJKLMN"
-			-> '-3HJ7'
-			-> Base 16 to 24 conversion.
-		"-3HJ7" "0123456789ABCDEFGHIJKLMN" "0123456789ABCDEF"
-			-> '-CA0F'
-	
-	[🟢] Extreme cases (int_min, int_max)
-		"-H0000000" "0AiDp6ebHz&QZ2f8" "0123456789ABCDEF"
-			-> '-80000000'
-			-> Base 16 to 16 conversion.
-		"-H0000000" "0AiDp6ebHz&QZ2f8" "0123456789"
-			-> '-2147483648'
-			-> Base 16 to 10 conversion.
-		"00001111111111111111111111111111111" "01" "aLpH4mAl3"
-			-> 'm4l3llHAlL'
-			-> Base 2 to 9 conversion.
-		"m4l3llHAlL" "aLpH4mAl3" "0123456789"
-			-> '2147483647'
-			-> Base 9 to 10 conversion.
-
-	[🟢] Extreme cases (underflow, overflow)
-		"-2147483649" "0123456789" "0123456789"
-			-> '2147483647'
-		"-H000000A" "0AiDp6ebHz&QZ2f8" "0123456789"
-			-> '2147483647'
-			-> Base 16 to 10 conversion.
-		"2147483648" "0123456789" "0123456789"
-			-> '-2147483648'
-		"VV303d00VV3d" "0td3%V" "0123456789"
-			-> '-2147483648'
-			-> Base 6 to 10 converison.
-
-	[🟢] Too much polarity (excess of +++ or --- | Does multiple - change sign ?)
-		"---9" "0123456789" "01"
-			-> '-1001'
-		"++++++++++D0D" "0dkD1" "jUs5i3u"
-			-> 'UiU'
-		"--+++++-yipiiiev" "poneyvif" "W41fuDr3am\!"
-			-> '-D3Wff4u'
-		"--+--00izzH&Z" "0iDp6ebHz&QZ" "h0T"
-			-> 'T0hT000h0ThT'
-		"-+++++--CA0F" "0123456789ABCDEF" "0123456789ABCDEFGHIJKLMN"
-			-> '-3HJ7'
-		"+++++-++++-m4l3llHAlL" "aLpH4mAl3" "0123456789"
-			-> '2147483647'
-
-	[🟢] When the set of character the base is JUST not enough
-		"2" "0123456789" "01"
-			-> '10'
-		"-3" "0123456789" "XYZ"
-			-> '-YX'
-		"---5" "0123456789" "0dkD1"
-			-> '-d0'
-		"8" "0123456789" "poneyvif"
-			-> 'op'
-		"-10" "0123456789" "0123456789"
-			-> '-10'
-		"++--+12" "0123456789" "abcdefghijkl"
-			-> 'ba'
+[🟢] Base case (positive and negatives, Bidirectional)
+	"0" "0123" "m1a"
+		-> 'm'
+		-> Base 4 to 3 conversion
+	"m" "m1a" "0123" 
+		-> '0'
 		
-	[🟢] Wrong bases
-		"657" "" "poneyvif"
-			-> (null)
-		"" "" "b0caL"
-			-> (null)
-		"-d" "d" "jUs5i3u"
-			-> (null)
-		"-9" "0123456789" "9" 
-			-> (null)
-		"1450" "012345" "poneyvifetsympa"
-			-> (null)
-		"KKKKKKKKKKK" "KKK" "FN"
-			-> (null)
-		"- 2 2 202" "0 2" "RN"
-			-> (null)
-		"-1+0" "+01" "bCBG"
-			-> (null)
-		"GGGi-" "-i7G" "s0uleiL"
-			-> (null)
-		"-efG+0" "0daef1Ghb+" "POWER"
-			-> (null)
-			
-	[🟢] No base change and nothing should change (from baseN to baseN)
-		"--3ff" "pon3yvif" "pon3yvif"
-			-> '3ff'
-		"++--?X?X?X;?" ";?X" ";?X"
-			-> '?X?X?X;?'
-		"++++++++++++++++dbpQQeZ" "0idp6ebHz&QZ" "0idp6ebHz&QZ"
-			-> 'dbpQQeZ'
-		"2147483647" "0123456789" "0123456789"
-			-> '2147483647'
-		"0000000000011111111" "01" "10"
-			-> '00000000'
-		"-yipiiiev" "poneyvif" "01234567"
-			-> '-46066635'
-		"-CA0F" "0123456789ABCDEF" "0123456789WAifeY"
-			-> "-iW0Y"
-	
-	[🟢] Where is the number ? (No number parsed)
-		"egg" "pon3yvif" "0123456789"
-			-> '0'
-		"ABC" ";?X" "0123456789"
-			-> '0'
-		"-be70h" "aLpH4mAl3" "0123456789"
-			-> '0'
-		"-FFF" "0123456789" "0123456789"
-			-> '0'
-		"-+GHZ" "0123456789ABCDEF" "0123456789"
-			-> '0'
+	"v" "vifd'0r?" "0123456789"
+		-> '0'
+		-> Base 8 to 10 conversion
+	"0" "0123456789" "vifd'0r?" 
+		-> 'v'
+
+	"-9" "0123456789" "01"
+		-> '-1001'
+		-> Base 10 to 2 conversion
+	"-1001" "01" "0123456789"
+		-> '-9'
 		
-	[🟢] No nbr should start like this (only number, sign, or white)
-		"a1111" "01" "0123456789"
-			-> "0"
-		"dumb++--+--53G7F548" "0123456789ABCDEFG" "0123456789"
-			-> "0"
-		"\ngl+--780" "0123456789" "0123456789"
-			-> "0"
-		
-		"7FFFFFFF" "0123456789ABCDEF" "0123456789"
-			-> "2147483647"
-		"++--+--53G7F548" "0123456789ABCDEFG" "0123456789"
-			-> "2147483647"
-		"      ++--1111111111111111111111111111111" "01" "0123456789"
-			-> "2147483647"
-		"		+--A02220281" "0123456789A" "0123456789"
-			-> "2147483647"
-
-	[🔴] 🌶️ After a whitespace... another whitespace, a sign, a number 
-		" 		\++++--+2147483647" "0123456789" "0123456789"
-			-> "0"
-		"			desudesu++++--+53G7F548" "0123456789ABCDEFG" "0123456789"
-			-> "0"
-
-		"		      ++++--+--++7FFFFFFF" "0123456789ABCDEF" "0123456789"
-			-> "2147483647"
-		🔴 "		      2147++++--+--++2147483647" "0123456789" "0123456789"
-			-> "2147"
+	"+D0D" "0dkD1" "jUs5i3u"
+		-> 'UiU'
+		-> Base 5 to 7 conversion
+	"+UiU" "jUs5i3u" "0dkD1"
+		-> 'D0D'
 	
-	[🟢] After a sign... another sign or a number.
-		" ----+--+		   AAA" "0123456789A" "0123456789"
-			-> "0"
-		" ----+--+nandesonobungakokoniarimasukaAAA" "0123456789A" "0123456789"
-			-> "0"
-		" ----+--+\xaAAA" "0123456789A" "0123456789"
-			-> "0"
+	"-46066635" "01234567" "0123456789A"
+		->'-5703314'
+		-> Base 8 to 11 conversion. (DEBUG)
+	"-yipiiiev" "poneyvif" "W41fuDr3am?" (\! is problematic on macOS)
+		-> '-D3Wff4u'
+		-> Base 8 to 11 conversion. ! is escaped.
+	"-D3Wff4u" "W41fuDr3am?" "poneyvif"
+		-> '-yipiiiev'
+		
+	"00izzH&Z" "0iDp6ebHz&QZ" "h0T"
+		-> 'T0hT000h0ThT'
+		-> Base 12 to 3 conversion.
+	"T0hT000h0ThT" "h0T" "0iDp6ebHz&QZ"
+		-> 'izzH&Z'
 
-		" ----+--+hh1" "ch13n" "0123456789"
-			-> "32"
-			
-	[🔴] Any illegal character should break number parsing
-		"     ---+--+0ab567" "0123" "m1a"
-			-> "m"
-		"---+--+9,56" "0123456789" "01"
-			-> "-1001"
-		"D0D.kd0" "0dkD1" "jUs5i3u"
-			-> "UiU"
-		🔴"	yipiiiev+fluttershy" "poneyvif" "W41fuDr3am\!"
-			-> "D3Wff4u"
-		"     ---+--+1234\x2b10" "0123456789" "0123456789"
-			-> "-1234"
+	"-CA0F" "0123456789ABCDEF" "0123456789ABCDEFGHIJKLMN"
+		-> '-3HJ7'
+		-> Base 16 to 24 conversion.
+	"-3HJ7" "0123456789ABCDEFGHIJKLMN" "0123456789ABCDEF"
+		-> '-CA0F'
+
+[🟢] Extreme cases (int_min, int_max)
+	"-H0000000" "0AiDp6ebHz&QZ2f8" "0123456789ABCDEF"
+		-> '-80000000'
+		-> Base 16 to 16 conversion.
+	"-H0000000" "0AiDp6ebHz&QZ2f8" "0123456789"
+		-> '-2147483648'
+		-> Base 16 to 10 conversion.
+	"00001111111111111111111111111111111" "01" "aLpH4mAl3"
+		-> 'm4l3llHAlL'
+		-> Base 2 to 9 conversion.
+	"m4l3llHAlL" "aLpH4mAl3" "0123456789"
+		-> '2147483647'
+		-> Base 9 to 10 conversion.
+
+[🟢] Extreme cases (underflow, overflow)
+	"-2147483649" "0123456789" "0123456789"
+		-> '2147483647'
+	"-H000000A" "0AiDp6ebHz&QZ2f8" "0123456789"
+		-> '2147483647'
+		-> Base 16 to 10 conversion.
+	"2147483648" "0123456789" "0123456789"
+		-> '-2147483648'
+	"VV303d00VV3d" "0td3%V" "0123456789"
+		-> '-2147483648'
+		-> Base 6 to 10 converison.
+
+[🟢] Too much polarity (excess of +++ or --- | Does multiple - change sign ?)
+	"---9" "0123456789" "01"
+		-> '-1001'
+	"++++++++++D0D" "0dkD1" "jUs5i3u"
+		-> 'UiU'
+	"--+++++-yipiiiev" "poneyvif" "W41fuDr3am?"
+		-> '-D3Wff4u'
+	"--+--00izzH&Z" "0iDp6ebHz&QZ" "h0T"
+		-> 'T0hT000h0ThT'
+	"-+++++--CA0F" "0123456789ABCDEF" "0123456789ABCDEFGHIJKLMN"
+		-> '-3HJ7'
+	"+++++-++++-m4l3llHAlL" "aLpH4mAl3" "0123456789"
+		-> '2147483647'
+
+[🟢] When the set of character the base is JUST not enough
+	"2" "0123456789" "01"
+		-> '10'
+	"-3" "0123456789" "XYZ"
+		-> '-YX'
+	"---5" "0123456789" "0dkD1"
+		-> '-d0'
+	"8" "0123456789" "poneyvif"
+		-> 'op'
+	"-10" "0123456789" "0123456789"
+		-> '-10'
+	"++--+12" "0123456789" "abcdefghijkl"
+		-> 'ba'
+	
+[🟢] Wrong bases
+	"657" "" "poneyvif"
+		-> (null)
+	"" "" "b0caL"
+		-> (null)
+	"-d" "d" "jUs5i3u"
+		-> (null)
+	"-9" "0123456789" "9" 
+		-> (null)
+	"1450" "012345" "poneyvifetsympa"
+		-> (null)
+	"KKKKKKKKKKK" "KKK" "FN"
+		-> (null)
+	"- 2 2 202" "0 2" "RN"
+		-> (null)
+	"-1+0" "+01" "bCBG"
+		-> (null)
+	"GGGi-" "-i7G" "s0uleiL"
+		-> (null)
+	"-efG+0" "0daef1Ghb+" "POWER"
+		-> (null)
+		
+[🟢] No base change and nothing should change (from baseN to baseN)
+	"--3ff" "pon3yvif" "pon3yvif"
+		-> '3ff'
+	"++--?X?X?X;?" ";?X" ";?X"
+		-> '?X?X?X;?'
+	"++++++++++++++++dbpQQeZ" "0idp6ebHz&QZ" "0idp6ebHz&QZ"
+		-> 'dbpQQeZ'
+	"2147483647" "0123456789" "0123456789"
+		-> '2147483647'
+	"0000000000011111111" "01" "10"
+		-> '00000000'
+	"-yipiiiev" "poneyvif" "01234567"
+		-> '-46066635'
+	"-CA0F" "0123456789ABCDEF" "0123456789WAifeY"
+		-> "-iW0Y"
+
+[🟢] Where is the number ? (No number parsed)
+	"egg" "pon3yvif" "0123456789"
+		-> '0'
+	"ABC" ";?X" "0123456789"
+		-> '0'
+	"-be70h" "aLpH4mAl3" "0123456789"
+		-> '0'
+	"-FFF" "0123456789" "0123456789"
+		-> '0'
+	"-+GHZ" "0123456789ABCDEF" "0123456789"
+		-> '0'
+
+[🟢] No nbr should start like this (only number, sign, or white)
+	"a1111" "01" "0123456789"
+		-> "0"
+	"dumb++--+--53G7F548" "0123456789ABCDEFG" "0123456789"
+		-> "0"
+	"\ngl+--780" "0123456789" "0123456789"
+		-> "0"
+	
+	"7FFFFFFF" "0123456789ABCDEF" "0123456789"
+		-> "2147483647"
+	"++--+--53G7F548" "0123456789ABCDEFG" "0123456789"
+		-> "2147483647"
+	"      ++--1111111111111111111111111111111" "01" "0123456789"
+		-> "2147483647"
+	"       +--A02220281" "0123456789A" "0123456789"
+		-> "2147483647"
+
+[🟢] 🌶️ After a whitespace... another whitespace, a sign, a number 
+	"          \++++--+2147483647" "0123456789" "0123456789"
+		-> "0"
+	"      desudesu++++--+53G7F548" "0123456789ABCDEFG" "0123456789"
+		-> "0"
+
+	"         ++++--+--++7FFFFFFF" "0123456789ABCDEF" "0123456789"
+		-> "2147483647"
+	"         2147++++--+--++2147483647" "0123456789" "0123456789"
+		-> "2147"
+
+[🟢] After a sign... another sign or a number.
+	" ----+--+          AAA" "0123456789A" "0123456789"
+		-> "0"
+	" ----+--+nandesonobungakokoniarimasukaAAA" "0123456789A" "0123456789"
+		-> "0"
+	" ----+--+\xaAAA" "0123456789A" "0123456789"
+		-> "0"
+	" ----+--+hh1" "ch13n" "0123456789"
+		-> "32"
+
+[🟢] Any illegal character should break number parsing
+	"     ---+--+0ab567" "0123" "m1a"
+		-> "m"
+	"---+--+9,56" "0123456789" "01"
+		-> "-1001"
+	"D0D.kd0" "0dkD1" "jUs5i3u"
+		-> "UiU"
+	"	yipiiiev+fluttershy" "poneyvif" "W41fuDr3am?"
+		-> "D3Wff4u"
+	"     ---+--+1234\x2b10" "0123456789" "0123456789"
+		-> "-1234"

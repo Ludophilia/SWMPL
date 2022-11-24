@@ -6,7 +6,7 @@
 /*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 15:47:08 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/24 00:19:33 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/24 21:06:24 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 {
 	if (argc != 4)
 		return (1);
-	printf("ft_convert_base(%s, %s, %s): '%s'\n",
+	printf("ft_convert_base(%s, %s, %s):\n	->'%s'\n",
 		argv[1], argv[2], argv[3],
 		ft_convert_base(argv[1], argv[2], argv[3]));
 }

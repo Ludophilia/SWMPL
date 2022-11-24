@@ -6,13 +6,13 @@
 /*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 23:11:37 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/24 15:54:52 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/24 20:50:24 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int	find_id(char c, char *base);
+int	id(char c, char *base);
 
 int	is_sign(char c);
 
@@ -20,26 +20,7 @@ int	is_space(char c);
 
 int	check_base(char *base);
 
-int	is_illeg_at(int i, char *str, char *base);
-
-int	len_nb(int nbr_b10, char *base_to)
-{	// This can be improved too right?
-	int	i;
-	int	radix;
-
-	radix = check_base(base_to);
-	if (!radix)
-		return (0);
-	i = 0;
-	if (nbr_b10 < 0)
-		i++;
-	while (nbr_b10)
-	{
-		nbr_b10 /= radix;
-		i++;
-	}
-	return (i);
-}
+int	len_nbr(int nbr_in, char *base_to);
 
 int	ft_atoi_base(char *str, char *base)
 {	
@@ -95,7 +76,7 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	if (!check_base(base_from) || !check_base(base_to))
 		return ((char *)0);
 	nbr_in = ft_atoi_base(nbr, base_from);
-	nbr_out = (char *)malloc((len_nb(nbr_in, base_to) + 1) * sizeof(char));
+	nbr_out = (char *)malloc((len_nbr(nbr_in, base_to) + 1) * sizeof(char));
 	if (!nbr_out)
 		return ((char *)0);
 	pos_out = nbr_out;
