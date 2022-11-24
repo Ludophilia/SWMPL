@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_program_name.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgermany <nyaritakunai@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 19:43:27 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/18 11:24:40 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/24 22:23:29 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

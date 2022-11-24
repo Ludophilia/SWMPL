@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgermany <nyaritakunai@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 13:21:59 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/08 10:42:06 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/24 22:16:39 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

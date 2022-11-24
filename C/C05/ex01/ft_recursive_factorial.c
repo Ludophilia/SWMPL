@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgermany <nyaritakunai@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 22:37:27 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/15 18:36:49 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/24 22:21:34 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

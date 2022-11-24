@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ultimate_range.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgermany <nyaritakunai@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:09:54 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/21 16:27:20 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/24 22:24:18 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

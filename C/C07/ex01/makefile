@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+         #
+#    By: jgermany <nyaritakunai@outlook.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 19:28:10 by jgermany          #+#    #+#              #
-#    Updated: 2022/11/21 19:28:11 by jgermany         ###   ########.fr        #
+#    Updated: 2022/11/24 22:24:13 by jgermany         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

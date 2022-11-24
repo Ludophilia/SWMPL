@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgermany <nyaritakunai@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 22:13:56 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/16 18:31:24 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/24 22:22:45 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main(int argc, char **argv)
 {
 	if (argc != 2)
 		return (1);
-	printf("ft_find_next_prime(%i): %i\n", atoi(argv[1]), ft_find_next_prime(atoi(argv[1])));
+	printf("ft_find_next_prime(%i): %i\n", atoi(argv[1]),
+		ft_find_next_prime(atoi(argv[1])));
 	return (0);
 }
