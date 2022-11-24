@@ -6,7 +6,7 @@
 #    By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 22:42:03 by jgermany          #+#    #+#              #
-#    Updated: 2022/11/24 00:18:47 by jgermany         ###   ########.fr        #
+#    Updated: 2022/11/24 13:46:44 by jgermany         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -214,7 +214,7 @@ What kind of tests should we do here?
 		"---+--+9,56" "0123456789" "01"
 			-> "-1001"
 		"D0D.kd0" "0dkD1" "jUs5i3u"
-			-> "-UiU"
+			-> "UiU"
 		🔴"	yipiiiev+fluttershy" "poneyvif" "W41fuDr3am\!"
 			-> "D3Wff4u"
 		"     ---+--+1234\x2b10" "0123456789" "0123456789"

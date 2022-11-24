@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_base2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgermany <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 01:26:07 by jgermany          #+#    #+#             */
-/*   Updated: 2022/10/05 17:17:48 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/24 15:41:37 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,4 @@ int	check_base(char *base)
 	if (i < 2)
 		return (0);
 	return (i);
-}
-
-int	is_illeg_at(int i, char *str, char *base)
-{
-	if (!(is_space(str[i]) || is_sign(str[i]) \
-		|| find_id(str[i], base) >= 0))
-		return (1);
-	else if (!(is_space(str[i + 1]) || is_sign(str[i + 1]))
-		&& is_space(str[i]))
-		return (1);
-	else if (!(is_sign(str[i + 1]) || find_id(str[i + 1], base) >= 0)
-		&& is_sign(str[i]))
-		return (1);
-	return (0);
 }

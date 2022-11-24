@@ -6,7 +6,7 @@
 /*   By: jgermany <jgermany@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 23:11:37 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/24 00:24:01 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/24 15:54:52 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,37 +41,34 @@ int	len_nb(int nbr_b10, char *base_to)
 	return (i);
 }
 
-int	ft_atoi_base(char *str, char *base) 
-{	/* Tomorrow 24/11. Use atoi_base from C04 which is more compact. 
-	// Add pointers maybe ? */
-	int	i;
+int	ft_atoi_base(char *str, char *base)
+{	
 	int	res;
-	int	sgn;
+	int	sign;
 	int	radix;
 
-	i = 0;
+	sign = 1;
 	res = 0;
-	sgn = 1;
 	radix = check_base(base);
-	if (!radix)
-		return (0);
-	while (str[i])
+	while (*str && (radix > 0))
 	{
-		if (is_illeg_at(i, str, base))
+		if (!(is_space(*str) || is_sign(*str) || id(*str, base) >= 0))
 			break ;
-		if (str[i] == '-')
-			sgn *= -1;
-		else if (find_id(str[i], base) >= 0)
-			res = (radix * res) + find_id(str[i], base);
-		if (!(find_id(str[i + 1], base) >= 0)
-			&& find_id(str[i], base) >= 0)
-			return (sgn * res);
-		i++;
+		else if (!(is_sign(*(str + 1)) || id(*(str + 1), base) >= 0)
+			&& is_sign(*str))
+			break ;
+		if (*str == '-')
+			sign *= -1;
+		else if (id(*str, base) >= 0)
+			res = (radix * res) + id(*str, base);
+		if (!(id(*(str + 1), base) >= 0) && (id(*str, base) >= 0))
+			return (sign * res);
+		str++;
 	}
 	return (0);
 }
 
-char	*ft_itoa_base(int nbr_in, char *base, char *nbr_out)
+char	*ft_itoa_base_sp(int nbr_in, char *base, char *nbr_out)
 {
 	int		radix;
 
@@ -79,7 +76,7 @@ char	*ft_itoa_base(int nbr_in, char *base, char *nbr_out)
 	if (!radix)
 		return ((char *)0);
 	if ((nbr_in >= radix) || (nbr_in <= -radix))
-		nbr_out = ft_itoa_base((nbr_in / radix), base, nbr_out);
+		nbr_out = ft_itoa_base_sp((nbr_in / radix), base, nbr_out);
 	if ((nbr_in < 0) && (nbr_in > -radix))
 		*nbr_out++ = '-';
 	if (nbr_in < 0)
@@ -102,7 +99,7 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	if (!nbr_out)
 		return ((char *)0);
 	pos_out = nbr_out;
-	pos_out = ft_itoa_base(nbr_in, base_to, pos_out);
+	pos_out = ft_itoa_base_sp(nbr_in, base_to, pos_out);
 	*pos_out = '\0';
 	return (nbr_out);
 }
