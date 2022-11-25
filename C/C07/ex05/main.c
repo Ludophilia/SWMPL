@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgermany <nyaritakunai@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 15:47:08 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/24 22:24:56 by jgermany         ###   ########.fr       */
+/*   Created: 2022/11/24 21:58:19 by jgermany          #+#    #+#             */
+/*   Updated: 2022/11/25 13:08:55 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,22 @@ char	**ft_split(char *str, char *charset);
 
 int	main(int argc, char **argv)
 {
-	char	**res;
-	int	i;
+	char	**strs;
+	int		i;
 
 	if (argc != 3)
 		return (1);
-	printf("str : '%s', charset: '%s'\n", argv[1], argv[2]);
-	i = 0;
-	res = ft_split(argv[1], argv[2]);
-	if (!res)
+	strs = ft_split(argv[1], argv[2]);
+	if (!strs)
 		return (1);
-	while (res[i])
+	i = 0;
+	printf("ft_split('%s', '%s')\n", argv[1], argv[2]);
+	while (strs[i])
 	{
-		printf("'%s'\n", res[i]);
+		printf("	-> strs[%i]: '%s'\n", i, strs[i]);
 		i++;
 	}
+	if (!*strs)
+		printf("	-> Empty array\n");
 	return (0);
 }

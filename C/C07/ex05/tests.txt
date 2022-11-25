@@ -1,57 +1,78 @@
-✨🌟😈 EVIL TESTS 😈🌟✨
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    tests.txt                                          :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jgermany <nyaritakunai@outlook.com>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/11/25 11:26:54 by jgermany          #+#    #+#              #
+#    Updated: 2022/11/25 13:12:59 by jgermany         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-😈🤩 Made by a psychopath with passion 🤩😈
+C07X05 🟢🔴
 
-Happy path :)
+Evil tests made with 😈😈😈 passion
+
+Context : Create ft_split(char *str, char *charset), a function that split a
+string str into multiple strings and store them into an array.
+The number of str in the array depends on the separator charset, such as if 
+charset is equal to " ", the str "hello world" is splitted into
+["hello", "world"].
+
+What kind of tests should we do here?
+	-> See below
+	
+[🟢] Happy path :)
 	"salut ça va" " "
-		Expected 3 words
+		-> Expected 3 words
 	"salutXYZçaXYZva" "XYZ"
-		Expected 3 words
+		-> Expected 3 words
 
-No charset
+[🟢] Empty charset
 	"lol" ""
-		Expected 1 word
-	"" "" ❌
-		Expected 0 word
+		-> Expected 1 word
+	"" ""
+		-> Expected 0 word
 
-No str (len_str == 0)
-	"" " " ❌
-		Expected 0 word
-	"" "bella" ❌
-		Expected 0 word
+[🟢] Charset longer than the str (len_str < len_charset)
+	"bell" "bella"
+		-> Expected 1 word
 
-(len_str < len_charset) && (len_str > 0)
-	"bell" "bella" ❌
-		Expected 1 word
-
-Charset at the end of str and NO EMPTY STR
-	"salut ça va " " "
-		Expected 3 words
-	"salutXYZçaXYZvaXYZ" "XYZ"
-		Expected 3 words
-
-Charset at the start of str and NO EMPTY STR
+[🟢] Charset at the start of str
 	" salut ça va" " "
-		Expected 3 words
+		-> Expected 3 words
 	"XYZsalutXYZçaXYZva" "XYZ"
-		Expected 3 words
+		-> Expected 3 words
+		
+[🟢] Charset at the end of str
+	"salut ça va " " "
+		-> Expected 3 words
+	"salutXYZçaXYZvaXYZ" "XYZ"
+		-> Expected 3 words
 
-Charset at the start/end of str and NO EMPTY STR
+[🟢] Charset at the start and end of str
 	"XYZsalutXYZçaXYZvaXYZ" "XYZ"
-		Expected 3 words
+		-> Expected 3 words
 
-Too many charset and NO EMPTY STR
+[🟢] Repeated charset
 	"salutXXXXXXXcaXXvaXXXXXXXXXXXXXX" "X"
-		Expected 3 words
+		-> Expected 3 words
 	"salut ça va                     " " "
-		Expected 3 words
+		-> Expected 3 words
 	"XXXXXXXXXXXXXXsalutXXXXXXXcaXXvaXXXXXXXXXXXXXX" "X"
-		Expected 3 words
+		-> Expected 3 words
 
-Incomplete charset
-	"XYsalutXYZçaYZva" "XYZ" ❌
-		Expected 2 words
+[🟢] Incomplete charset
+	"XYsalutXYZçaYZva" "XYZ"
+		-> Expected 2 words
+	"  salut  ça va " "  "
+		-> Expected 2 words
 
-Incomplete charset and NO EMPTY STR
-	"  salut  ça va " "  " ❌
-		Expected 2 words
+[🟢] Empty str
+	"" " "
+		-> Expected 0 word
+	"" "bella"
+		-> Expected 0 word
+	"" "X"
+		-> Expected 0 word
