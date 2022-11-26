@@ -6,13 +6,12 @@
 /*   By: jgermany <nyaritakunai@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 15:47:08 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/24 22:24:36 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/26 00:43:22 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-
-char	*ft_convert_base(char *nbr, char *base_from, char *base_to);
+#include "ft_convert_base.h"
 
 int	main(int argc, char **argv)
 {

@@ -6,21 +6,12 @@
 /*   By: jgermany <nyaritakunai@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 23:11:37 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/24 22:24:33 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/26 00:42:33 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-
-int	id(char c, char *base);
-
-int	is_sign(char c);
-
-int	is_space(char c);
-
-int	check_base(char *base);
-
-int	len_nbr(int nbr_in, char *base_to);
+#include "ft_convert_base.h"
 
 int	ft_atoi_base(char *str, char *base)
 {	
