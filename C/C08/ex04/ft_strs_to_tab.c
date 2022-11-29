@@ -6,11 +6,12 @@
 /*   By: jgermany <nyaritakunai@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 19:50:30 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/27 21:33:25 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/29 13:26:59 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_strs_to_tab.h"
+# include <stdlib.h>
 
 int	ft_strlen(char *str)
 {
