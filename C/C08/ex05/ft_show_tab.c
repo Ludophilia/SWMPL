@@ -6,7 +6,7 @@
 /*   By: jgermany <nyaritakunai@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 13:22:42 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/29 14:37:50 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/29 15:49:57 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void	ft_putnbr(int nb)
 		ft_putnbr(nb / 10);
 	if (nb < 0 && nb > -10)
 		write(1, "-", 1);
-    if (nb < 0)
-        nb = '0' + -(nb % 10);
-    else
-        nb = '0' + (nb % 10);
+	if (nb < 0)
+		nb = '0' + -(nb % 10);
+	else
+		nb = '0' + (nb % 10);
 	write(1, &nb, 1);
 }
 
@@ -37,6 +37,11 @@ void	ft_show_tab(struct s_stock_str *par)
 	par--;
 	while ((++par)->str)
 	{
-		
+		ft_putstr(par->str);
+		ft_putstr("\n");
+		ft_putnbr(par->size);
+		ft_putstr("\n");
+		ft_putstr(par->copy);
+		ft_putstr("\n");
 	}
 }

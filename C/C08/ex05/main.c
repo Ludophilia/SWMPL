@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stock_str.h                                     :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgermany <nyaritakunai@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/27 19:42:37 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/29 15:50:10 by jgermany         ###   ########.fr       */
+/*   Created: 2022/11/29 15:53:13 by jgermany          #+#    #+#             */
+/*   Updated: 2022/11/29 15:55:51 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STOCK_STR_H
-# define FT_STOCK_STR_H
+#include "ft_stock_str.h"
 
-typedef struct s_stock_str
+int	main(void)
 {
-	int		size;
-	char	*str;
-	char	*copy;
-}	t_stock_str;
-
-struct s_stock_str	*ft_strs_to_tab(int ac, char **av);
-char				*ft_strdup(char *src);
-int					ft_strlen(char *str);
-
-#endif
+	// ???
+	return (0);
+}
