@@ -6,7 +6,7 @@
 /*   By: jgermany <nyaritakunai@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 19:50:30 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/29 15:33:39 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/29 19:42:14 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 {
 	t_stock_str	*structs;
 	int			i;
-	int			size;
 
 	structs = (t_stock_str *)malloc((ac + 1) * sizeof(t_stock_str));
 	if (!structs)
