@@ -1,14 +1,24 @@
-int    ft_strncmp(char *s1, char *s2, unsigned int n)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jgermany <nyaritakunai@outlook.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/29 20:46:15 by jgermany          #+#    #+#             */
+/*   Updated: 2022/11/29 20:46:29 by jgermany         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_strcmp(char *s1, char *s2)
 {
-	unsigned int    i;
-	
+	int	i;
+
 	i = 0;
-	while ((i < n) && (s1[i] || s2[i]))
+	while (s1[i] || s2[i])
 	{
-		if (s1[i] > s2[i])
-			return (1);
-		else if (s1[i] < s2[i])
-			return (-1);
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
 		i++;
 	}
 	return (0);

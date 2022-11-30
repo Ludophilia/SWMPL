@@ -1,15 +1,19 @@
-#include "../includes/ft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jgermany <nyaritakunai@outlook.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/29 20:35:49 by jgermany          #+#    #+#             */
+/*   Updated: 2022/11/29 20:51:36 by jgermany         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void    ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
+#include <unistd.h>
 
-void    ft_putstr(char *str)
+void	ft_putstr(char *str)
 {
 	while (*str)
-	{
-		ft_putchar(*str);
-		str++;
-	}
+		write(1, str++, 1);
 }

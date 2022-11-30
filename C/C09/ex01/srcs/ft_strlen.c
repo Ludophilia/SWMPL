@@ -1,9 +1,21 @@
-int    ft_strlen(char *str)
-{
-	int    len;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jgermany <nyaritakunai@outlook.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/29 20:44:44 by jgermany          #+#    #+#             */
+/*   Updated: 2022/11/29 20:51:55 by jgermany         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-	len = 0;
-	while (*(str + len))
-		len++;
+int	ft_strlen(char *str)
+{
+	int	len;
+
+	len = -1;
+	while (str[++len])
+		;
 	return (len);
 }
