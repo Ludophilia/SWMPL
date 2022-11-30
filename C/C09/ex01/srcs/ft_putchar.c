@@ -6,11 +6,11 @@
 /*   By: jgermany <nyaritakunai@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 20:35:29 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/29 20:51:20 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/30 17:50:48 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft.h"
 
 void	ft_putchar(char c)
 {

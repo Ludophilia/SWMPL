@@ -6,36 +6,38 @@
 #    By: jgermany <nyaritakunai@outlook.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 13:02:44 by jgermany          #+#    #+#              #
-#    Updated: 2022/11/30 13:14:50 by jgermany         ###   ########.fr        #
+#    Updated: 2022/11/30 18:17:53 by jgermany         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Iincludes -c #header>>>
+CCFL = -Wall -Wextra -Werror
 OBFL = -c
+OUTFL = -o
+INCFL = -I
 
-ARC = ar
-ARCFLAGS = -rcs
+AR = ar
+ARFL = -rcs
 
 SRCS = ./srcs
 INCLUDES = ./includes
-C_FILES = *.c # WTF?
-OBJ_FILES = srcs/*.o #${CFILES: .c=.o}
-
-LDIR = .
-LFL = -l
-LDIRFL = -L
+CFILES = $(wildcard $(SRCS)/ft*.c) # *.c does something somehow... WTF?
+OBFILES = $(CFILES:.c=.o)
 
 all: $(NAME)
-$(NAME): $(OBJ_FILES)
-	$(ARC) $(ARCFLAGS) $@ $^
-$(OBJ_FILES):
-	cd $(SRCS) && $(CC) $(CFLAGS) $(C_FILES)
+$(NAME): $(OBFILES)
+	$(AR) $(ARFL) $@ $^
+%.o: %.c
+	$(CC) $(CCFL) $(INCFL)$(INCLUDES) $(OBFL) $< $(OUTFL) $@
 
 re: fclean all
 fclean: clean
 	rm $(NAME)
+xclean:
+	rm $(NAME)
 clean:
-	rm $(OBJ_FILES)
+	rm $(OBFILES)
+
+.PHONY: clean

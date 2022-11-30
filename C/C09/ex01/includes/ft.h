@@ -6,7 +6,7 @@
 /*   By: jgermany <nyaritakunai@outlook.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:05:13 by jgermany          #+#    #+#             */
-/*   Updated: 2022/11/30 13:16:33 by jgermany         ###   ########.fr       */
+/*   Updated: 2022/11/30 18:13:04 by jgermany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ void	ft_putchar(char c);
 void	ft_swap(int *a, int *b);
 void	ft_putstr(char *str);
 int		ft_strlen(char *str);
-int		ft_strcnp(char *s1, char *s2);
+int		ft_strcmp(char *s1, char *s2);
 
 #endif
